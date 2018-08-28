@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- Templates -->
+	<definition name="baseLayout" template="/WEB-INF/jsp/layout/base-layout.jsp">
+		<!-- <put-attribute name="titleApp" value="Al Carrer Skate Shop" /> -->
+		<put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/jsp/layout/menu.jsp" />
+		<put-attribute name="breadcrumb" value="/WEB-INF/jsp/layout/breadcrumb.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/layout/body.jsp" />
+		 <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />  
+ 		<put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />  
+ 
+	</definition>
+  
+	<definition name="index" extends="baseLayout">
+		<put-attribute name="title" value="Al Carrer Skate Shop" />
+		<put-attribute name="body" value="/WEB-INF/jsp/pages/index.jsp" />
+	</definition>
+
+	<!-- caixa -->
+	<definition name="caixa" extends="baseLayout">
+		<put-attribute name="title" value="Caixa" />
+		<put-attribute name="body" value="/WEB-INF/jsp/pages/caixa/caixa.jsp" />
+	</definition>
+
+	<!-- Abrir Caixa -->
+	<definition name="abrirCaixa" extends="baseLayout">
+		<put-attribute name="title" value="Abrir Caixa" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/caixa/abrirCaixa.jsp" />
+	</definition>
+
+	<!-- Fechar Caixa -->
+	<definition name="fecharCaixa" extends="baseLayout">
+		<put-attribute name="title" value="Fechar Caixa" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/caixa/fecharCaixa.jsp" />
+	</definition>
+
+	<!-- categoria -->
+	<definition name="categoria" extends="baseLayout">
+		<put-attribute name="title" value="Categoria" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/categoria/categoria.jsp" />
+	</definition>
+
+	<!-- Marca -->
+	<definition name="marca" extends="baseLayout">
+		<put-attribute name="title" value="Marca" />
+		<put-attribute name="body" value="/WEB-INF/jsp/pages/marca/marca.jsp" />
+	</definition>
+
+	<definition name="medida" extends="baseLayout">
+		<put-attribute name="title" value="Gerenciar Medida" />
+		<put-attribute name="body" value="/WEB-INF/jsp/pages/medida/medida.jsp" />
+	</definition>
+
+	<!-- fornecedor -->
+	<definition name="fornecedor" extends="baseLayout">
+		<put-attribute name="title" value="Fornecedor" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/fornecedor/fornecedor.jsp" />
+	</definition>
+
+	<!-- produto -->
+	<definition name="produto" extends="baseLayout">
+		<put-attribute name="title" value="Produto" />
+		<put-attribute name="body" value="/WEB-INF/jsp/pages/produto/produto.jsp" />
+	</definition>
+
+	<!-- recebimento -->
+	<definition name="recebimento" extends="baseLayout">
+		<put-attribute name="title" value="Recebimento" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/recebimento/recebimento.jsp" />
+	</definition>
+
+	<!-- retirada -->
+	<definition name="retirada" extends="baseLayout">
+		<put-attribute name="titleApp" value="Al Carrer Skate Shop" />
+		<put-attribute name="title" value="Retirada" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/retirada/retirada.jsp" />
+	</definition>
+
+	<!-- subCategoria -->
+	<definition name="subCategoria" extends="baseLayout">
+		<put-attribute name="title" value="Sub Categoria" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/subCategoria/subCategoria.jsp" />
+	</definition>
+
+	<!-- FormasDePagamento -->
+	<definition name="formasDePagamento" extends="baseLayout">
+		<put-attribute name="title" value="Formas De Pagamento" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/formasDePagamento/formasDePagamento.jsp" />
+	</definition>
+
+	<!-- venda -->
+	<definition name="venda" extends="baseLayout">
+		<put-attribute name="title" value="Venda" />
+		<put-attribute name="body" value="/WEB-INF/jsp/pages/venda/venda.jsp" />
+	</definition>
+	
+	<!-- Dominios -->
+	<definition name="dominio" extends="baseLayout">
+		<put-attribute name="title" value="Dominios" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/dominio/dominio.jsp" />
+	</definition>
+
+	<!-- CONSULTAS -->
+	<!-- Consultar Produto -->
+	<definition name="consultarProduto" extends="baseLayout">
+		<put-attribute name="title" value="Consultar Produtos" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/produto/consultarProduto.jsp" />
+	</definition>
+
+	<definition name="consultarCategoria" extends="baseLayout">
+		<put-attribute name="title" value="Consultar Sub Categoria" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/categoria/consultarCategoria.jsp" />
+	</definition>
+
+	<definition name="consultarSubCategoria" extends="baseLayout">
+		<put-attribute name="title" value="Consultar Sub Categorias" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/subCategoria/consultarSubCategoria.jsp" />
+	</definition>
+
+	<definition name="consultarMarca" extends="baseLayout">
+		<put-attribute name="title" value="Consultar Marcas" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/marca/consultarMarca.jsp" />
+	</definition>
+
+	<definition name="consultarMedida" extends="baseLayout">
+		<put-attribute name="title" value="Consultar Medidas" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/medida/consultarMedida.jsp" />
+	</definition>
+
+	<definition name="consultarFornecedor" extends="baseLayout">
+		<put-attribute name="title" value="Consultar Fornecedores" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/pages/fornecedor/consultarFornecedor.jsp" />
+	</definition>
+
+	<definition name="consultarFormasDePagamento" extends="baseLayout">
+		<put-attribute name="title" value="Consultar Formas De Pagamento" />
+		<put-attribute name="body"  value="/WEB-INF/jsp/pages/formasDePagamento/consultarFormasDePagamento.jsp" />
+	</definition>
+
+	<definition name="consultarDominio" extends="baseLayout">
+		<put-attribute name="title" value="Consultar Dominios" />
+		<put-attribute name="body"  value="/WEB-INF/jsp/pages/dominio/consultarDominio.jsp" />
+	</definition>
+
+	<definition name="consultarVendas" extends="baseLayout">
+		<put-attribute name="title" value="Consultar Vendas" />
+		<put-attribute name="body"  value="/WEB-INF/jsp/pages/venda/consultarVenda.jsp" />
+	</definition>
+
+
+
+	<!-- erro -->
+	<definition name="error" extends="baseLayout">
+		<put-attribute name="title" value="Error" />
+		<put-attribute name="body" value="/WEB-INF/jsp/pages/erro/erro.jsp" />
+	</definition>
+
+
+</tiles-definitions>
