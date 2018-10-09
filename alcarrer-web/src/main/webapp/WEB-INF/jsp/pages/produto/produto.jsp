@@ -5,8 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
-
 <spring:url value="/resources/jquery-1.12.4.js" var="jquery124Js" />
 <script type="text/javascript" src="${jquery124Js}"></script>
 

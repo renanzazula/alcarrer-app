@@ -118,8 +118,8 @@ public class VendaController {
 	
 	@RequestMapping(value = "/consultarVendas", method = { RequestMethod.GET, RequestMethod.POST })
 	public String consultarVenda(@ModelAttribute("vendaForm") Venda vendaForm, BindingResult result,
-			Model model, final RedirectAttributes redirectAttributes) {
-		model.addAttribute("list", vendaService.consultar());
+			Model model, final RedirectAttributes redirectAttributes) { 		 
+		model.addAttribute("list", vendaService.consultar());		
 		model.addAttribute("breadCrumbItens", breadCrumbList());
 		return VIEW_COLSULTA;
 	}

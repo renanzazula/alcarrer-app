@@ -25,12 +25,10 @@ public class VendaDTOtoVendaFunction implements Function<VendaEntity, Venda> {
 		output.setTroco(input.getTroco());
 		output.setPagamento(input.getPagamento());
 		output.setValorTotal(input.getValorTotal());
-		output.setFormaDePagamento(
-				JpaFunctions.formasDePagamentoDTOtoFormasDePagamento.apply(input.getFormaDePagamento()));
+		output.setFormaDePagamento(JpaFunctions.formasDePagamentoDTOtoFormasDePagamento.apply(input.getFormaDePagamento()));
 		output.setCliente(JpaFunctions.clienteDTOtocliente.apply(input.getCliente()));
 		output.setCaixa(JpaFunctions.caixaDTOtoCaixa.apply(input.getCaixa()));
-		output.setVendaHasItemProduto(input.getVendaHasItemProduto().stream()
-				.map(JpaFunctions.vendaHasItemProdutoDTOtoVendaHasItem).collect(Collectors.toList()));
+		output.setVendaHasItemProduto(input.getVendaHasItemProduto().stream().map(JpaFunctions.vendaHasItemProdutoDTOtoVendaHasItem).collect(Collectors.toList()));
 		return output;
 	}
 

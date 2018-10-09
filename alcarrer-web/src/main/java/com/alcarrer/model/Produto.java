@@ -256,8 +256,12 @@ public class Produto implements Serializable {
 
 	public Integer getQuantidadeTotalEstoque() {
 		Integer quantidadeTotalEstoque = new Integer(0);
-		for (ProdutoHasItensTipoMedida produtoHasItensTipoMedida : this.produtoHasItensTipoMedida) {
-				quantidadeTotalEstoque = quantidadeTotalEstoque + produtoHasItensTipoMedida.getQuantidade();
+		if(this.produtoHasItensTipoMedida != null) { 
+			for (ProdutoHasItensTipoMedida produtoHasItensTipoMedida : this.produtoHasItensTipoMedida) {
+				if(produtoHasItensTipoMedida.getQuantidade() != null) { 
+					quantidadeTotalEstoque = quantidadeTotalEstoque + produtoHasItensTipoMedida.getQuantidade();
+				}
+			}
 		}
 		return quantidadeTotalEstoque;
 	}
@@ -289,4 +293,5 @@ public class Produto implements Serializable {
 
 	public void setDominios(List<Dominio> dominios) {
 		this.dominios = dominios;
-	} }
+	}
+}

@@ -17,8 +17,8 @@ public class VendaAjaxController {
 
 	@ResponseBody
 	@RequestMapping(value = "/consultarItensVenda")
-	public Venda addicionarProduto(@RequestBody Integer codigo) {
-		return vendaService.consultarByCodigo(new Venda(codigo));
+	public Venda consultarItensVenda(@RequestBody Integer codigo) {
+		Venda venda = vendaService.consultarByCodigo(new Venda(codigo));
+		return venda;
 	}
-
 }

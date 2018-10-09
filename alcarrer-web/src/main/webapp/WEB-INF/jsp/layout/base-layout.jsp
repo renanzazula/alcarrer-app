@@ -27,9 +27,10 @@
 
 	<spring:url value="/resources/images/favicon.ico" var="favicon" />
 	<link rel="shortcut icon" type="image/png" href="${favicon}"/>
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
-	
+
+	<spring:url value="/resources/jquery.min.js_311.js" var="jquery_min_js_311_js" />
+	<script type="text/javascript" src="${jquery_min_js_311_js}"></script>
+
 	<script type="text/javascript">
 // 		$(document).ready(function() {
 // 		    $("#locales").change(function () {

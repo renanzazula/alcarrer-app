@@ -67,19 +67,20 @@
 	  				dataType : 'json',
 	  				timeout : 100000,
 	  				success : function(data) {
+
 	  					console.log(data);
+	  					
 	  					$.each(data.vendaHasItemProduto, function(key, value) {
+	  						
   							lines = lines +  '<tr>';
 							lines = lines +  '<td style="text-align: center;">' + data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.codigo        +'</td>';
   							lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.barCode       +'</td>';
 	  						lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.nome          +'</td>';
 	  						lines = lines +  '<td>'								+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.descricao     +'</td>';
-	  						lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.marca.nome 		    +'</td>';
+	  						lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.marca.nome 		    +'</td>';
 	  						lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.itensTipoMedida.valor +'</td>';
 	  						lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.preco         +'</td>';		  						
  	  						lines = lines + '</tr>';	
-  					 
-	  						
 	  					});
 	  					// Open this row
 	  					console.log(inicioTable + lines + finalTable);
