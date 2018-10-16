@@ -55,7 +55,7 @@ public class MedidaServiceImpl implements MedidaService {
 			});
 			medidaDB.setItensTipoMedida(itensSet);
 		}
-		return JpaFunctions.medidaDTOtoMedida.apply(medidaRepository.saveAndFlush(medidaDB));
+		return JpaFunctions.medidaToMedidaEntity.apply(medidaRepository.saveAndFlush(medidaDB));
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class MedidaServiceImpl implements MedidaService {
 			});
 			medidaDB.getItensTipoMedida().addAll(itensSet);
 		}
-		return JpaFunctions.medidaDTOtoMedida.apply(medidaRepository.saveAndFlush(medidaDB));
+		return JpaFunctions.medidaToMedidaEntity.apply(medidaRepository.saveAndFlush(medidaDB));
 	}
 
 	@Override
@@ -89,12 +89,12 @@ public class MedidaServiceImpl implements MedidaService {
 
 	@Override
 	public List<Medida> consultar() {
-		return medidaRepository.findAll().stream().map(JpaFunctions.medidaDTOtoMedida).collect(Collectors.toList());
+		return medidaRepository.findAll().stream().map(JpaFunctions.medidaToMedidaEntity).collect(Collectors.toList());
 	}
 
 	@Override
 	public Medida consultarByCodigo(Medida entity) {
-		return JpaFunctions.medidaDTOtoMedida.apply(medidaRepository.findOne(entity.getCodigo()));
+		return JpaFunctions.medidaToMedidaEntity.apply(medidaRepository.findOne(entity.getCodigo()));
 	}
 
 	@Override
@@ -125,7 +125,7 @@ public class MedidaServiceImpl implements MedidaService {
 		return medidaRepository
 				.findByItensTipoMedidaCategoriaAndItensTipoMedidaSubCategoriaAndAndItensTipoMedidaMarca(categoria,
 						subCategoria, marca)
-				.stream().map(JpaFunctions.medidaDTOtoMedida).collect(Collectors.toList());
+				.stream().map(JpaFunctions.medidaToMedidaEntity).collect(Collectors.toList());
 
 	}
 

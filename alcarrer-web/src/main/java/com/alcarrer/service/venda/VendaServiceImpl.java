@@ -79,7 +79,7 @@ public class VendaServiceImpl implements VendaService {
 		vendaDB.setFormaDePagamento(formaDePagamentoRepository.getOne(venda.getFormaDePagamento().getCodigo()));
 		vendaDB.setCliente(clienteRepository.getOne(1));
 		vendaDB.setCaixa(caixaRepository.getOne(1));
-		Venda vResult = JpaFunctions.vendaDTOtoVenda.apply(vendaRepository.saveAndFlush(vendaDB));
+		Venda vResult = JpaFunctions.vendaToVendaEntity.apply(vendaRepository.saveAndFlush(vendaDB));
 		 
 		/**
 		 * Efetuar baixa no estoque...		
@@ -132,7 +132,7 @@ public class VendaServiceImpl implements VendaService {
 		vendaDB.setFormaDePagamento(formaDePagamentoRepository.getOne(venda.getFormaDePagamento().getCodigo()));
 		vendaDB.setCliente(clienteRepository.getOne(venda.getCliente().getCodigo()));
 		vendaDB.setCaixa(caixaRepository.getOne(venda.getCaixa().getCodigo()));
-		return JpaFunctions.vendaDTOtoVenda.apply(vendaRepository.saveAndFlush(vendaDB));
+		return JpaFunctions.vendaToVendaEntity.apply(vendaRepository.saveAndFlush(vendaDB));
 
 	}
 
@@ -144,12 +144,12 @@ public class VendaServiceImpl implements VendaService {
 
 	@Override
 	public Venda consultarByCodigo(Venda venda) {
-		return JpaFunctions.vendaDTOtoVenda.apply(vendaRepository.getOne(venda.getCodigo()));
+		return JpaFunctions.vendaToVendaEntity.apply(vendaRepository.getOne(venda.getCodigo()));
 	}
 
 	@Override
 	public List<Venda> consultar() {
-		return vendaRepository.findAll().stream().map(JpaFunctions.vendaDTOtoVenda).collect(Collectors.toList());
+		return vendaRepository.findAll().stream().map(JpaFunctions.vendaToVendaEntity).collect(Collectors.toList());
 	}
 
 	@Override

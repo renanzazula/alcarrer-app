@@ -7,7 +7,7 @@ import com.alcarrer.entity.MedidaEntity;
 import com.alcarrer.function.JpaFunctions;
 import com.alcarrer.model.Medida;
 
-public class MedidaDTOtoMedidaFunction implements Function<MedidaEntity, Medida> {
+public class MedidaToMedidaEntityFunction implements Function<MedidaEntity, Medida> {
 
 	@Override
 	public Medida apply(MedidaEntity input) {
@@ -17,7 +17,7 @@ public class MedidaDTOtoMedidaFunction implements Function<MedidaEntity, Medida>
 		output.setDescricao(input.getDescricao());
 		
 		if (input.getItensTipoMedida() != null) {
-			output.setItensTipoMedida(input.getItensTipoMedida().stream().map(JpaFunctions.itensTipoMedidaDTOtoItensTipoMedida).collect(Collectors.toList()));
+			output.setItensTipoMedida(input.getItensTipoMedida().stream().map(JpaFunctions.itensTipoMedidaToItensTipoMedidaEntity).collect(Collectors.toList()));
 		}
 		return output;
 	}

@@ -5,7 +5,7 @@ import java.util.function.Function;
 import com.alcarrer.entity.DominioEntity;
 import com.alcarrer.model.Dominio;
 
-public class DominioDTOtoDominioFunction  implements Function<DominioEntity, Dominio> {
+public class DominioToDominioEntityFunction  implements Function<DominioEntity, Dominio> {
 
 	@Override
 	public Dominio apply(DominioEntity input) {

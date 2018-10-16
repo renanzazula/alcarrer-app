@@ -5,7 +5,7 @@ import java.util.function.Function;
 import com.alcarrer.entity.MarcaEntity;
 import com.alcarrer.model.Marca;
 
-public class MarcaDTOtoMarcaFunction implements Function<MarcaEntity, Marca> {
+public class MarcaToMarcaEntityFunction implements Function<MarcaEntity, Marca> {
 
 	@Override
 	public Marca apply(MarcaEntity input) {

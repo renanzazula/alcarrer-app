@@ -5,7 +5,7 @@ import java.util.function.Function;
 import com.alcarrer.entity.FornecedorEntity;
 import com.alcarrer.model.Fornecedor;
 
-public class FornecedorDTOtoFornecedorFunction implements Function<FornecedorEntity, Fornecedor> {
+public class FornecedorToFornecedorEntityFunction implements Function<FornecedorEntity, Fornecedor> {
 
 	@Override
 	public Fornecedor apply(FornecedorEntity input) {

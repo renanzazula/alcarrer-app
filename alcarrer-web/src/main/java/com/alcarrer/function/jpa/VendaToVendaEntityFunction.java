@@ -7,7 +7,7 @@ import com.alcarrer.entity.VendaEntity;
 import com.alcarrer.function.JpaFunctions;
 import com.alcarrer.model.Venda;
 
-public class VendaDTOtoVendaFunction implements Function<VendaEntity, Venda> {
+public class VendaToVendaEntityFunction implements Function<VendaEntity, Venda> {
 
 	@Override
 	public Venda apply(VendaEntity input) {
@@ -25,10 +25,10 @@ public class VendaDTOtoVendaFunction implements Function<VendaEntity, Venda> {
 		output.setTroco(input.getTroco());
 		output.setPagamento(input.getPagamento());
 		output.setValorTotal(input.getValorTotal());
-		output.setFormaDePagamento(JpaFunctions.formasDePagamentoDTOtoFormasDePagamento.apply(input.getFormaDePagamento()));
-		output.setCliente(JpaFunctions.clienteDTOtocliente.apply(input.getCliente()));
-		output.setCaixa(JpaFunctions.caixaDTOtoCaixa.apply(input.getCaixa()));
-		output.setVendaHasItemProduto(input.getVendaHasItemProduto().stream().map(JpaFunctions.vendaHasItemProdutoDTOtoVendaHasItem).collect(Collectors.toList()));
+		output.setFormaDePagamento(JpaFunctions.formasDePagamentoToFormasDePagamentoEntity.apply(input.getFormaDePagamento()));
+		output.setCliente(JpaFunctions.clienteTOClienteEntity.apply(input.getCliente()));
+		output.setCaixa(JpaFunctions.caixaToCaixaEntity.apply(input.getCaixa()));
+		output.setVendaHasItemProduto(input.getVendaHasItemProduto().stream().map(JpaFunctions.vendaHasItemProdutoToVendaHasItemEntity).collect(Collectors.toList()));
 		return output;
 	}
 

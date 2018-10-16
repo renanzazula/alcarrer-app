@@ -5,7 +5,7 @@ import java.util.function.Function;
 import com.alcarrer.entity.SubCategoriaEntity;
 import com.alcarrer.model.SubCategoria;
 
-public class SubCategoriaDTOtoSubCategoriaFunction implements Function<SubCategoriaEntity, SubCategoria> {
+public class SubCategoriaToSubCategoriaEntityFunction implements Function<SubCategoriaEntity, SubCategoria> {
 
 	@Override
 	public SubCategoria apply(SubCategoriaEntity input) {
