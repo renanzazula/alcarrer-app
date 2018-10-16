@@ -5,7 +5,7 @@ import java.util.function.Function;
 import com.alcarrer.entity.FormasDePagamentoEntity;
 import com.alcarrer.model.FormasDePagamento;
 
-public class FormasDePagamentoDTOtoFormasDePagamentoFunction implements Function<FormasDePagamentoEntity, FormasDePagamento> {
+public class FormasDePagamentoToFormasDePagamentoEntityFunction implements Function<FormasDePagamentoEntity, FormasDePagamento> {
 
 	@Override
 	public FormasDePagamento apply(FormasDePagamentoEntity input) {

@@ -5,7 +5,7 @@ import java.util.function.Function;
 import com.alcarrer.entity.ClienteEntity;
 import com.alcarrer.model.Cliente;
 
-public class ClienteDTOtoClienteFunction implements Function<ClienteEntity, Cliente> {
+public class ClienteToClienteEntityFunction implements Function<ClienteEntity, Cliente> {
 
 	@Override
 	public Cliente apply(ClienteEntity input) {

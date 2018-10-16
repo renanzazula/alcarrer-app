@@ -22,7 +22,7 @@ public class FornecedorServiceImpl implements FornecedorService {
 		FornecedorEntity fornecedorDB = new FornecedorEntity();
 		fornecedorDB.setDescricao(entity.getDescricao());
 		fornecedorDB.setNome(entity.getNome());
-		return JpaFunctions.fornecedorDTOtoFornecedor.apply(repository.saveAndFlush(fornecedorDB));
+		return JpaFunctions.fornecedortoFornecedorEntity.apply(repository.saveAndFlush(fornecedorDB));
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class FornecedorServiceImpl implements FornecedorService {
 		FornecedorEntity fornecedorDB = repository.findOne(entity.getCodigo());
 	 	fornecedorDB.setDescricao(entity.getDescricao());
 		fornecedorDB.setNome(entity.getNome());
-		return JpaFunctions.fornecedorDTOtoFornecedor.apply(repository.saveAndFlush(fornecedorDB));
+		return JpaFunctions.fornecedortoFornecedorEntity.apply(repository.saveAndFlush(fornecedorDB));
 	}
 
 	@Override
@@ -41,12 +41,12 @@ public class FornecedorServiceImpl implements FornecedorService {
 
 	@Override
 	public List<Fornecedor> consultar() {
-		return repository.findAll().stream().map(JpaFunctions.fornecedorDTOtoFornecedor).collect(Collectors.toList());
+		return repository.findAll().stream().map(JpaFunctions.fornecedortoFornecedorEntity).collect(Collectors.toList());
 	}
 
 	@Override
 	public Fornecedor consultarByCodigo(Fornecedor entity) {
-		return JpaFunctions.fornecedorDTOtoFornecedor.apply(repository.findOne(entity.getCodigo()));
+		return JpaFunctions.fornecedortoFornecedorEntity.apply(repository.findOne(entity.getCodigo()));
 	}
 
 }

@@ -22,7 +22,7 @@ public class SubCategoriaServiceImpl implements SubCategoriaService {
 		SubCategoriaEntity subCategoriaDB = new SubCategoriaEntity();
 		subCategoriaDB.setNome(entity.getNome());
 		subCategoriaDB.setDescricao(entity.getDescricao());
-		return JpaFunctions.subCategoriaDTOtoCategoria.apply(repository.saveAndFlush(subCategoriaDB));
+		return JpaFunctions.subCategoriaToSubCategoriaEntity.apply(repository.saveAndFlush(subCategoriaDB));
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class SubCategoriaServiceImpl implements SubCategoriaService {
 		SubCategoriaEntity subCategoriaDB = repository.findOne(entity.getCodigo());
 		subCategoriaDB.setDescricao(entity.getDescricao());
 		subCategoriaDB.setNome(entity.getNome());
-		return JpaFunctions.subCategoriaDTOtoCategoria.apply(repository.saveAndFlush(subCategoriaDB));
+		return JpaFunctions.subCategoriaToSubCategoriaEntity.apply(repository.saveAndFlush(subCategoriaDB));
 	}
 
 	@Override
@@ -41,12 +41,12 @@ public class SubCategoriaServiceImpl implements SubCategoriaService {
 
 	@Override
 	public List<SubCategoria> consultar() {
-		return repository.findAll().stream().map(JpaFunctions.subCategoriaDTOtoCategoria).collect(Collectors.toList());
+		return repository.findAll().stream().map(JpaFunctions.subCategoriaToSubCategoriaEntity).collect(Collectors.toList());
 	}
 
 	@Override
 	public SubCategoria consultarByCodigo(Integer codigo) {
-		return JpaFunctions.subCategoriaDTOtoCategoria.apply(repository.findOne(codigo));
+		return JpaFunctions.subCategoriaToSubCategoriaEntity.apply(repository.findOne(codigo));
 	}
 
 }
