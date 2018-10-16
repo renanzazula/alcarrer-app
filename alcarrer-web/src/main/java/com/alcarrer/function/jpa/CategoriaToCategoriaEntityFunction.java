@@ -6,7 +6,7 @@ import com.alcarrer.entity.CategoriaEntity;
 import com.alcarrer.function.JpaFunctions;
 import com.alcarrer.model.Categoria;
 
-public class CategoriatoCategoriaEntityFunction implements java.util.function.Function<CategoriaEntity, Categoria> {
+public class CategoriaToCategoriaEntityFunction implements java.util.function.Function<CategoriaEntity, Categoria> {
 
 	@Override
 	public Categoria apply(CategoriaEntity input) {

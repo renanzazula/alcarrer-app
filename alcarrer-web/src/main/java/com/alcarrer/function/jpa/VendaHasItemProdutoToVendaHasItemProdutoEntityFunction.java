@@ -12,7 +12,7 @@ public class VendaHasItemProdutoToVendaHasItemProdutoEntityFunction
 	@Override
 	public VendaHasItemProduto apply(VendaHasItemProdutoEntity input) {
 		VendaHasItemProduto output = new VendaHasItemProduto();
-		output.setProdutoHasItensTipoMedida(JpaFunctions.produtoHasItensTipoMedidaTOProdutoHasItensTipoMedidaEntity.apply(input.getProdutoHasItensTipoMedida()));
+		output.setProdutoHasItensTipoMedida(JpaFunctions.produtoHasItensTipoMedidaToProdutoHasItensTipoMedidaEntity.apply(input.getProdutoHasItensTipoMedida()));
 		output.setValorUnitario(input.getValorUnitario());
 		output.setQuantidade(input.getQuantidade());
 		return output;
