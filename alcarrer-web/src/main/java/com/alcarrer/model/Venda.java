@@ -4,12 +4,18 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.alcarrer.util.Util;
+
 public class Venda implements Serializable {
 
 	private static final long serialVersionUID = -6612762288260227887L;
 
 	private Integer codigo;
 	private Date dataHora;
+
+	private String dataHoraFormat;
+	private String horaFormat;
+	
 	private Double valorTotal;
 	private String status;
 	private Caixa caixa;
@@ -31,7 +37,7 @@ public class Venda implements Serializable {
 	public Venda() {
 		super();
 	}
-	
+
 	public Venda(Integer codigo) {
 		super();
 		this.codigo = codigo;
@@ -179,6 +185,14 @@ public class Venda implements Serializable {
 
 	public void setVendaHasItemProduto(List<VendaHasItemProduto> vendaHasItemProduto) {
 		this.vendaHasItemProduto = vendaHasItemProduto;
+	}
+
+	public String getDataHoraFormat() {
+		return Util.formateDate(dataHora, "dd/MM/yyyy");
+	}
+
+	public String getHoraFormat() {
+		return Util.formateDate(dataHora, "HH:MM:ss");
 	}
 
 }

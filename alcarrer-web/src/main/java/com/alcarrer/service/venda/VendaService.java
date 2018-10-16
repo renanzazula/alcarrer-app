@@ -9,11 +9,11 @@ public interface VendaService {
 
 	Venda alterar(Venda venda);
 
-	void excluir(Venda venda);
+	void cancelar(Venda venda);
 
 	Venda consultarByCodigo(Venda venda);
 
 	List<Venda> consultar();
 
-	long gerarCodigoVenda();
+	 
 }

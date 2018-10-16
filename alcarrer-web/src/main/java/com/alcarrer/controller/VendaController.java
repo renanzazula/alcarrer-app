@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.alcarrer.controller.validator.VendaValidator;
+import com.alcarrer.enums.StatusVendaEnum;
 import com.alcarrer.model.BreadCrumb;
 import com.alcarrer.model.Cliente;
 import com.alcarrer.model.FormasDePagamento;
@@ -89,16 +90,31 @@ public class VendaController {
 		return VIEW;
 	}
 	
+	@RequestMapping(value = "/abrirAlterarVenda", method = { RequestMethod.GET, RequestMethod.POST })
+	public String abrirAlterarSubCategoria(Model model, Venda venda,
+			final RedirectAttributes redirectAttributes) {		  
+		Venda vendaForm = vendaService.consultarByCodigo(venda);
+		vendaForm.setFormasDePagamento(carregarFormaDePagamento());  
+		model.addAttribute("vendaForm", vendaForm);
+		model.addAttribute("breadCrumbItens", breadCrumbList(VIEW));
+		return VIEW;
+	}
+	
 	/**
 	 * 
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "/cancelarVenda", method = { RequestMethod.GET, RequestMethod.POST })
-	public String cancelar(ModelMap model) {
-		model.addAttribute("vendaForm", newVenda());
-		model.addAttribute("breadCrumbItens", breadCrumbList(VIEW));
-		return VIEW;
+	public String cancelar(@ModelAttribute("vendaForm") Venda venda, BindingResult result, Model model,
+			final RedirectAttributes redirectAttributes) {
+		vendaService.cancelar(venda);
+		venda.setFormasDePagamento(carregarFormaDePagamento());
+		model.addAttribute("vendaForm", new Venda());
+		model.addAttribute("listStatusVenda", carregarStatusVenda());
+		model.addAttribute("list", vendaService.consultar());
+		model.addAttribute("breadCrumbItens", breadCrumbList(VIEW_COLSULTA));
+		return VIEW_COLSULTA;
 	}
 	
 	/**
@@ -111,7 +127,20 @@ public class VendaController {
 	public String finalizarVenda(@ModelAttribute("vendaForm") Venda venda, BindingResult result, Model model,
 			final RedirectAttributes redirectAttributes) {
 		vendaService.incluir(venda);
-		model.addAttribute("vendaForm", venda);
+		model.addAttribute("vendaForm", new Venda());
+		venda.setFormasDePagamento(carregarFormaDePagamento());
+		model.addAttribute("listStatusVenda", carregarStatusVenda());
+		model.addAttribute("list", vendaService.consultar());
+		model.addAttribute("breadCrumbItens", breadCrumbList(FINALIZAR_VENDA_VIEW));
+		return VIEW_COLSULTA;
+	}
+
+	@RequestMapping(value = "/alterarVenda", method = { RequestMethod.GET, RequestMethod.POST })
+	public String alterarVenda(@ModelAttribute("vendaForm") Venda venda, BindingResult result, Model model,
+			final RedirectAttributes redirectAttributes) {
+		vendaService.incluir(venda);
+		model.addAttribute("vendaForm", new Venda());
+		model.addAttribute("list", vendaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList(FINALIZAR_VENDA_VIEW));
 		return VIEW_COLSULTA;
 	}
@@ -119,12 +148,14 @@ public class VendaController {
 	@RequestMapping(value = "/consultarVendas", method = { RequestMethod.GET, RequestMethod.POST })
 	public String consultarVenda(@ModelAttribute("vendaForm") Venda vendaForm, BindingResult result,
 			Model model, final RedirectAttributes redirectAttributes) { 		 
+		vendaForm.setFormasDePagamento(carregarFormaDePagamento());
+		model.addAttribute("vendaForm", new Venda());
+		model.addAttribute("listStatusVenda", carregarStatusVenda());
 		model.addAttribute("list", vendaService.consultar());		
-		model.addAttribute("breadCrumbItens", breadCrumbList());
+		model.addAttribute("breadCrumbItens", breadCrumbList(VIEW));
 		return VIEW_COLSULTA;
 	}
 
-	
 	/**
 	 * 
 	 * @param stepVenda
@@ -148,20 +179,9 @@ public class VendaController {
 	 * @return
 	 */
 	private Venda newVenda() {
-		Venda venda = new Venda();
-		venda.setCodigo(numeroVenda());
-//		venda.setData(null); 
-//		venda.setHora(null);
+		Venda venda = new Venda();	
 		venda.setFormasDePagamento(carregarFormaDePagamento()); 
 		return venda;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	private Integer numeroVenda() {
-		return 1;
 	}
 
 	/**
@@ -171,11 +191,14 @@ public class VendaController {
 	public List<FormasDePagamento> carregarFormaDePagamento() {
 		return formasDePagamentoService.consultar();
 	}
-		
-	public List<BreadCrumb> breadCrumbList() {
-		List<String> msg = new ArrayList<String>();
-		msg.add("menu.cadastro");
-		msg.add("menu.cadastro.venda");
-		return Util.breadCrumbList(message, msg);
+	
+	/**
+	 * Preenche combo Forma de Pagamento
+	 * @retur
+	 */
+	public StatusVendaEnum[] carregarStatusVenda() {
+		return StatusVendaEnum.values();
 	}
+	
+		
 }
