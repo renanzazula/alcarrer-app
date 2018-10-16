@@ -77,9 +77,9 @@
   							lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.barCode       +'</td>';
 	  						lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.nome          +'</td>';
 	  						lines = lines +  '<td>'								+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.descricao     +'</td>';
-	  						lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.marca.nome 		    +'</td>';
+	  						lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.marca.nome    +'</td>';
 	  						lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.itensTipoMedida.valor +'</td>';
-	  						lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.preco         +'</td>';		  						
+	  						lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.precoVenda    +'</td>';		  						
  	  						lines = lines + '</tr>';	
 	  					});
 	  					// Open this row
@@ -119,7 +119,7 @@
 	<form:hidden path="codigo" id="codigo"/>
 	<br>
 		<fieldset>
-			<legend>Gerenciar Venda</legend>
+			<legend>Consultar Venda</legend>
 			<ul class="form-style-1">
 				<li>
 					<c:if test="${not empty mensagem}">
@@ -133,42 +133,99 @@
 						</div>
 					</c:if>
 					<br>
-				 	<table id="tableConsulta" class="display" style="width:100%" >
-						<thead>
-							<tr>
-							 	<th></th>
-								<th>Código</th>
-								<th>Data Hora</th> 
-								<th>Status</th> 
-								<th>Cliente</th>
-								<th>Forma De Pagamento</th>
-								<th>Quantidade itens</th>
-								<th>Desconto</th>   
-								<th>Pagamento</th> 
-								<th>Valor Pendente</th>
-								<th>Valor Total</th> 
-								<th></th>
-							</tr>
-						</thead>				
-						<tbody>
-							<c:forEach items="${list}" var="i">
-								<tr>
-									<td class="details-control"></td>				
-									<td class="cod">${i.codigo}</td>
-									<td>${i.dataHora}</td>
-									<td>${i.status}</td>
-									<td>${i.cliente.codigo}</td>
-									<td>${i.formaDePagamento.nome}</td>
-									<td>${i.quantidade}</td> 
-									<td>${i.desconto}</td>   
-									<td>${i.pagamento}</td> 
-									<td>${i.valorPendente}</td>
-									<td>${i.valorTotal}</td> 
-									<td class="imprimir-recibo"></td>			
-								</tr>
-							</c:forEach>	
-						</tbody>
-					</table>
+					<!-- filtro -->
+					<fieldset>
+						<legend  style=" font-weight: bold;">Filtro</legend>
+						<ul class="form-style-1">
+							<li>
+								<table style="width:100%">
+									<tr>
+										<td width="20%">
+											<label>Codigo</label>
+											<form:input path="codigo" type="text" class="field-long" placeholder="Código"/>
+										</td>
+										<td width="20%">
+											<label>Data</label>
+											<form:input path="codigo" type="text" class="field-long" placeholder="DD/MM/YYYY"/>
+										</td>
+										<td width="20%">
+											<label>Status</label> 
+											
+											<select class="field-select">
+												<c:forEach items="${listStatusVenda}" var="i">
+													<option value="${i}" label="${i}"/>
+												</c:forEach>
+											</select>
+						
+										</td>
+										<td width="20%">
+											<label>Cliente</label> 
+											<form:input path="codigo" type="text" class="field-long" placeholder="Bar Code"/>
+										</td>
+										<td width="20%">
+											<label>Forma Pagamento</label> 										
+											<form:select path="formaDePagamento" cssClass="field-select">				 								
+				 								<c:forEach items="${vendaForm.formasDePagamento}" var="item">
+			 						 				<form:option value="${item}" label="${item.nome}"/>
+				 						  		</c:forEach>
+				 						   </form:select> 	
+										</td>
+										<td width="20%">											
+											<label>&nbsp;</label>
+											<input type="button" id="" value="Consultar" />
+										</td>
+							 		</tr>
+							 	</table>				
+							</li>						 
+						</ul>
+					</fieldset>	
+					<!-- filtro -->
+					<br>
+					<fieldset>
+						<legend  style=" font-weight: bold;"></legend>
+							<ul class="form-style-1">
+							<li>							
+						 	<table id="tableConsulta" class="display" style="width:100%" >
+								<thead>
+									<tr>
+									 	<th></th>
+										<th>Código</th>
+										<th>Data</th>
+										<th>Hora</th> 
+										<th>Status</th> 
+										<th>Cliente</th>
+										<th>Forma De Pagamento</th>
+										<th>Quantidade itens</th>
+										<th>Desconto</th>   
+										<th>Pagamento</th> 
+										<th>Valor Pendente</th>
+										<th>Valor Total</th> 
+										<th></th>
+									</tr>
+								</thead>				
+								<tbody>
+									<c:forEach items="${list}" var="i">
+										<tr>
+											<td class="details-control"></td>				
+											<td class="cod">${i.codigo}</td>
+											<td>${i.dataHoraFormat}</td>
+											<td>${i.horaFormat}</td>
+											<td>${i.status}</td>
+											<td>${i.cliente.codigo}</td>
+											<td>${i.formaDePagamento.nome}</td>
+											<td>${i.quantidade}</td> 
+											<td>${i.desconto}</td>   
+											<td>${i.pagamento}</td> 
+											<td>${i.valorPendente}</td>
+											<td>${i.valorTotal}</td> 
+											<td class="imprimir-recibo"></td>			
+										</tr>
+									</c:forEach>	
+								</tbody>
+							</table>
+						</li>	
+					</ul>
+				</fieldset>
 				</li>
 			</ul>
 		</fieldset>	

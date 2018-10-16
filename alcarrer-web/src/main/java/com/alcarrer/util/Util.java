@@ -1,6 +1,7 @@
 package com.alcarrer.util;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,13 +16,22 @@ import com.alcarrer.model.BreadCrumb;
 
 public class Util {
 
-	public static String FormadaDataSql(java.sql.Date date, String format) {
+	public static String formateDataSql(java.sql.Date date, String format) {
 		DateFormat dateFormat = new SimpleDateFormat(format);
 		return dateFormat.format(date);
 	}
 
+	public static String formateDate(Date date, String format) {
+		DateFormat formatter = new SimpleDateFormat(format);
+		if(date != null) {
+			return formatter.format(date);
+		}else {
+			return "";
+		}
+	}
+
 	/**
-	 * Metodo responsavel por obeter a data atula do systema "dd/MM/yyyy" - para
+	 * Metodo responsavel por obeter a data atula do sistema "dd/MM/yyyy" - para
 	 * data HH:mm:ss - Hora
 	 * 
 	 * @param formato

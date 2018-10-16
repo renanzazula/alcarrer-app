@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alcarrer.entity.ProdutoHasItensTipoMedidaEntity;
 import com.alcarrer.entity.VendaEntity;
 import com.alcarrer.entity.VendaHasItemProdutoEntity;
+import com.alcarrer.enums.StatusVendaEnum;
 import com.alcarrer.function.JpaFunctions;
 import com.alcarrer.model.Venda;
 import com.alcarrer.model.VendaHasItemProduto;
@@ -75,16 +76,18 @@ public class VendaServiceImpl implements VendaService {
 		vendaDB.setTotalApagar(venda.getTotalApagar());
 		vendaDB.setTroco(venda.getTroco());
 		vendaDB.setPagamento(venda.getPagamento());
-		vendaDB.setValorTotal(venda.getValorTotal());
+		vendaDB.setValorTotal(venda.getSubTotal()); // posso considerar valor total é sub total venda... TODO: validar
 		vendaDB.setFormaDePagamento(formaDePagamentoRepository.getOne(venda.getFormaDePagamento().getCodigo()));
 		vendaDB.setCliente(clienteRepository.getOne(1));
 		vendaDB.setCaixa(caixaRepository.getOne(1));
+		// Date time 
+		vendaDB.setStatus(StatusVendaEnum.Efetuda.name());
 		Venda vResult = JpaFunctions.vendaToVendaEntity.apply(vendaRepository.saveAndFlush(vendaDB));
 		 
 		/**
 		 * Efetuar baixa no estoque...		
 		 */
-		baixaNoEstoque(venda);
+		removerProdutoDoEstoque(venda);
 		
 		return vResult;
 	}
@@ -97,11 +100,28 @@ public class VendaServiceImpl implements VendaService {
 	 * @param produto_has_itens_tipo_medida_codigo
 	 */
 	@Transactional
-	private void baixaNoEstoque(Venda venda) {
+	private void removerProdutoDoEstoque(Venda venda) {
 		venda.getVendaHasItemProduto().forEach(itemVenda -> {
  			Integer codigo = getProdutoHasItensTipoMedida(itemVenda.getProdutoHasItensTipoMedida().getItensTipoMedida().getCodigo(), itemVenda.getProdutoHasItensTipoMedida().getProduto().getCodigo());
 			ProdutoHasItensTipoMedidaEntity produtoHasItensTipoMedida = produtoHasItensTipoMedidaRepository.getOne(codigo);
 			produtoHasItensTipoMedida.setQuantidade(produtoHasItensTipoMedida.getQuantidade() - itemVenda.getProdutoHasItensTipoMedida().getQuantidade());
+			produtoHasItensTipoMedidaRepository.saveAndFlush(produtoHasItensTipoMedida);
+		});
+	}
+	
+	/**
+	 * adiciona quantidade tabela produto_has_itens_tipo_medida 
+	 * 
+	 * produto_has_itens_tipo_medida
+	 * 
+	 * @param produto_has_itens_tipo_medida_codigo
+	 */
+	@Transactional
+	private void adicionarProdutoNoEstoque(Venda venda) {
+		venda.getVendaHasItemProduto().forEach(itemVenda -> {
+ 			Integer codigo = getProdutoHasItensTipoMedida(itemVenda.getProdutoHasItensTipoMedida().getItensTipoMedida().getCodigo(), itemVenda.getProdutoHasItensTipoMedida().getProduto().getCodigo());
+			ProdutoHasItensTipoMedidaEntity produtoHasItensTipoMedida = produtoHasItensTipoMedidaRepository.getOne(codigo);
+			produtoHasItensTipoMedida.setQuantidade(produtoHasItensTipoMedida.getQuantidade() + itemVenda.getProdutoHasItensTipoMedida().getQuantidade());
 			produtoHasItensTipoMedidaRepository.saveAndFlush(produtoHasItensTipoMedida);
 		});
 	}
@@ -112,6 +132,9 @@ public class VendaServiceImpl implements VendaService {
 				.findByItensTipoMedidaCodigoAndProdutoCodigo(itemTipoMedidaCodigo, produtoCodigo).getCodigo();
 	}
 
+	//Por questao de processo alarar venda 
+	// Uma venda devera ser cancelada e crear uma nova... 
+	// TODO: Alterar venda nao existe....	
 	@Override
 	public Venda alterar(Venda venda) {
 		VendaEntity vendaDB = vendaRepository.findOne(venda.getCodigo());
@@ -119,7 +142,7 @@ public class VendaServiceImpl implements VendaService {
 		// itens mideida
 
 		// status; Definicao o que sera status...
-
+		
 		vendaDB.setQuantidade(venda.getQuantidade());
 		vendaDB.setSubTotal(venda.getSubTotal());
 		vendaDB.setValorPendente(venda.getValorPendente());
@@ -136,24 +159,33 @@ public class VendaServiceImpl implements VendaService {
 
 	}
 
+	
 	@Override
-	public void excluir(Venda venda) {
+	@Transactional
+	public void cancelar(Venda venda) {
+		
+		adicionarProdutoNoEstoque(venda);
+		
 		VendaEntity vendaDB = vendaRepository.findOne(venda.getCodigo());
-		vendaRepository.delete(vendaDB);
+		
+		// TODO: update caixa 
+		// forma de pagamento setar como retirada
+		//data e hora 
+		vendaDB.setStatus(StatusVendaEnum.Cancelado.name());		
+		vendaRepository.saveAndFlush(vendaDB);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Venda consultarByCodigo(Venda venda) {
 		return JpaFunctions.vendaToVendaEntity.apply(vendaRepository.getOne(venda.getCodigo()));
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Venda> consultar() {
 		return vendaRepository.findAll().stream().map(JpaFunctions.vendaToVendaEntity).collect(Collectors.toList());
 	}
 
-	@Override
-	public long gerarCodigoVenda() {
-		return 0;
-	}
+	 
 }

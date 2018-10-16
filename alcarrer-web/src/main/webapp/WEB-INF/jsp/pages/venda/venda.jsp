@@ -50,6 +50,30 @@
 			$("form[name='vendaForm']").submit();
 		});		
 		
+		$('#alterarVenda').on( 'click', function () {  		
+			$("form[name='vendaForm']").attr('action', 'alterarVenda');
+ 			var data = $('#tableVenda').DataTable().rows().data();
+			for (var i=0; i < data.length; i++){
+				$("form[name='vendaForm']").append('<input type="hidden" value="'+data[i][0]+'" name="vendaHasItemProduto['+i+'].produtoHasItensTipoMedida.produto.codigo"/>');
+				$("form[name='vendaForm']").append('<input type="hidden" value="'+data.cell(0,2).nodes().to$().find('input').val()+'" name="vendaHasItemProduto['+i+'].produtoHasItensTipoMedida.quantidade"/>');
+				$("form[name='vendaForm']").append('<input type="hidden" value="'+data[i][3]+'" name="vendaHasItemProduto['+i+'].produtoHasItensTipoMedida.itensTipoMedida.codigo"/>');
+				$("form[name='vendaForm']").append('<input type="hidden" value="'+data[i][5]+'" name="vendaHasItemProduto['+i+'].produtoHasItensTipoMedida.valorUnitario"/>');					
+			}
+			$("form[name='vendaForm']").submit();
+		});	
+		
+		$('#cancelarVenda').on( 'click', function () {  		
+			$("form[name='vendaForm']").attr('action', 'cancelarVenda');
+ 			var data = $('#tableVenda').DataTable().rows().data();
+			for (var i=0; i < data.length; i++){
+				$("form[name='vendaForm']").append('<input type="hidden" value="'+data[i][0]+'" name="vendaHasItemProduto['+i+'].produtoHasItensTipoMedida.produto.codigo"/>');
+				$("form[name='vendaForm']").append('<input type="hidden" value="'+data.cell(0,2).nodes().to$().find('input').val()+'" name="vendaHasItemProduto['+i+'].produtoHasItensTipoMedida.quantidade"/>');
+				$("form[name='vendaForm']").append('<input type="hidden" value="'+data[i][3]+'" name="vendaHasItemProduto['+i+'].produtoHasItensTipoMedida.itensTipoMedida.codigo"/>');
+				$("form[name='vendaForm']").append('<input type="hidden" value="'+data[i][5]+'" name="vendaHasItemProduto['+i+'].produtoHasItensTipoMedida.valorUnitario"/>');					
+			}
+			$("form[name='vendaForm']").submit();
+		});	
+		
 		var tableMedida = $('#tableMedida').DataTable( {
 			"paging":   false,
 	  		"bLengthChange": false,
@@ -316,16 +340,16 @@
 						            </tr>
 						        </tfoot>
 								<tbody>
-									<c:forEach items="${vendaForm.produtos}" var="i">
+									<c:forEach items="${vendaForm.vendaHasItemProduto}" var="i">
 										<tr>
-											<td class="cod">${i.codigo}</td>
-											<td class="nome">${i.nome}</td>
-											<td><input id="spinnerQuantidade"/></td>
-											<td></td>
-											<td><input id="tamanho"/></td>
-											<td class="precoVenda">${i.precoVenda}</td>
-											<td>${i.precoVenda}</td>
-											<td>(${i.precoVenda * i.quantidade})</td>
+											<td class="cod">${i.produtoHasItensTipoMedida.produto.codigo}</td>
+											<td class="nome">${i.produtoHasItensTipoMedida.produto.nome}</td>
+											<td><input id="spinnerQuantidade" value="${i.quantidade}"/></td>
+											<td>${i.produtoHasItensTipoMedida.itensTipoMedida.codigo}</td>
+											<td>${i.produtoHasItensTipoMedida.itensTipoMedida.valor}</td>
+											<td class="precoVenda">${i.valorUnitario}</td>
+											<td>${i.valorUnitario}</td>
+											<td>${i.valorUnitario * i.quantidade}</td>
 											<td></td>
 										</tr>
 									</c:forEach>
@@ -434,8 +458,15 @@
 					<ul class="form-style-1" style="padding: 0px 10px 1px 0px; text-align: right;">
 						<li>
 							<input type="button" id="novaVenda" value="Nova Venda" style="width: 20%" />
-							<input type="button" id="efetuarVenda" value="Efetuar Venda" style="width: 20%" />
-							<input type="button" id="cancelarVenda" value="Cancelar Venda" style="width: 20%" />
+							
+							<c:if test="${vendaForm.codigo == null}">
+								<input type="button" id="efetuarVenda" value="Efetuar Venda" style="width: 20%" />\	 
+							</c:if>
+							
+							<c:if test="${vendaForm.codigo != null}">
+								<input type="button" id="alterarVenda" value="Alterar Venda" style="width: 20%" />
+								<input type="button" id="cancelarVenda" value="Cancelar Venda" style="width: 20%" />
+							</c:if>
 						</li>
 					</ul>
 				</fieldset>	
