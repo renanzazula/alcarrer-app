@@ -32,7 +32,7 @@ public class ProdutoToProdutoEntityFunction implements Function<ProdutoEntity, P
 		}
 
 		if(input.getCategoria() !=  null) {
-			output.setCategoria(JpaFunctions.categoriatoCategoriaEntity.apply(input.getCategoria()));
+			output.setCategoria(JpaFunctions.categoriaToCategoriaEntity.apply(input.getCategoria()));
 		}
 		
 		if(input.getSubCategoria() != null) {
@@ -48,7 +48,7 @@ public class ProdutoToProdutoEntityFunction implements Function<ProdutoEntity, P
 		}
 
 		if (input.getProdutoHasItensTipoMedida() != null) {
-			output.setProdutoHasItensTipoMedida(input.getProdutoHasItensTipoMedida().stream().map(JpaFunctions.produtoHasItensTipoMedidaTOProdutoHasItensTipoMedidaEntity).collect(Collectors.toList()));
+			output.setProdutoHasItensTipoMedida(input.getProdutoHasItensTipoMedida().stream().map(JpaFunctions.produtoHasItensTipoMedidaToProdutoHasItensTipoMedidaEntity).collect(Collectors.toList()));
 		}
 		
 		return output;

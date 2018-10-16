@@ -26,7 +26,7 @@ public class VendaToVendaEntityFunction implements Function<VendaEntity, Venda> 
 		output.setPagamento(input.getPagamento());
 		output.setValorTotal(input.getValorTotal());
 		output.setFormaDePagamento(JpaFunctions.formasDePagamentoToFormasDePagamentoEntity.apply(input.getFormaDePagamento()));
-		output.setCliente(JpaFunctions.clienteTOClienteEntity.apply(input.getCliente()));
+		output.setCliente(JpaFunctions.clienteToClienteEntity.apply(input.getCliente()));
 		output.setCaixa(JpaFunctions.caixaToCaixaEntity.apply(input.getCaixa()));
 		output.setVendaHasItemProduto(input.getVendaHasItemProduto().stream().map(JpaFunctions.vendaHasItemProdutoToVendaHasItemEntity).collect(Collectors.toList()));
 		return output;
