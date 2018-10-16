@@ -1,19 +1,19 @@
 package com.alcarrer.function;
 
-import com.alcarrer.function.jpa.CaixaDTOtoCaixaFunction;
-import com.alcarrer.function.jpa.CategoriaDTOtoCategoriaFunction;
-import com.alcarrer.function.jpa.ClienteDTOtoClienteFunction;
-import com.alcarrer.function.jpa.DominioDTOtoDominioFunction;
-import com.alcarrer.function.jpa.FormasDePagamentoDTOtoFormasDePagamentoFunction;
-import com.alcarrer.function.jpa.FornecedorDTOtoFornecedorFunction;
-import com.alcarrer.function.jpa.ItensTipoMedidaDTOtoItensTipoMedidaFunction;
-import com.alcarrer.function.jpa.MarcaDTOtoMarcaFunction;
-import com.alcarrer.function.jpa.MedidaDTOtoMedidaFunction;
-import com.alcarrer.function.jpa.ProdutoDTOtoProdutoFunction;
-import com.alcarrer.function.jpa.ProdutoHasItensTipoMedidaDTOtoprodutoHasItensTipoMedidaFunction;
-import com.alcarrer.function.jpa.SubCategoriaDTOtoSubCategoriaFunction;
-import com.alcarrer.function.jpa.VendaDTOtoVendaFunction;
-import com.alcarrer.function.jpa.VendaHasItemProdutoDTOtoVendaHasItemProdutoFunction;
+import com.alcarrer.function.jpa.CaixaToCaixaEntityFunction;
+import com.alcarrer.function.jpa.CategoriatoCategoriaEntityFunction;
+import com.alcarrer.function.jpa.ClienteToClienteEntityFunction;
+import com.alcarrer.function.jpa.DominioToDominioEntityFunction;
+import com.alcarrer.function.jpa.FormasDePagamentoToFormasDePagamentoEntityFunction;
+import com.alcarrer.function.jpa.FornecedorToFornecedorEntityFunction;
+import com.alcarrer.function.jpa.ItensTipoMedidaToItensTipoMedidaEntityFunction;
+import com.alcarrer.function.jpa.MarcaToMarcaEntityFunction;
+import com.alcarrer.function.jpa.MedidaToMedidaEntityFunction;
+import com.alcarrer.function.jpa.ProdutoToProdutoEntityFunction;
+import com.alcarrer.function.jpa.ProdutoHasItensTipoMedidaToProdutoHasItensTipoMedidaEntityFunction;
+import com.alcarrer.function.jpa.SubCategoriaToSubCategoriaEntityFunction;
+import com.alcarrer.function.jpa.VendaToVendaEntityFunction;
+import com.alcarrer.function.jpa.VendaHasItemProdutoToVendaHasItemProdutoEntityFunction;
 
 public class JpaFunctions {
 
@@ -21,19 +21,19 @@ public class JpaFunctions {
 
 	}
 
-	public static final CategoriaDTOtoCategoriaFunction categoriaDTOtoCategoria = new CategoriaDTOtoCategoriaFunction();
-	public static final SubCategoriaDTOtoSubCategoriaFunction subCategoriaDTOtoCategoria = new SubCategoriaDTOtoSubCategoriaFunction();
-	public static final FornecedorDTOtoFornecedorFunction fornecedorDTOtoFornecedor = new FornecedorDTOtoFornecedorFunction();
-	public static final MarcaDTOtoMarcaFunction marcaDTOtomarca = new MarcaDTOtoMarcaFunction();
-	public static final MedidaDTOtoMedidaFunction medidaDTOtoMedida = new MedidaDTOtoMedidaFunction();
-	public static final ItensTipoMedidaDTOtoItensTipoMedidaFunction itensTipoMedidaDTOtoItensTipoMedida = new ItensTipoMedidaDTOtoItensTipoMedidaFunction();
-	public static final ProdutoDTOtoProdutoFunction produtoDTOtoProduto = new ProdutoDTOtoProdutoFunction();
-	public static final FormasDePagamentoDTOtoFormasDePagamentoFunction formasDePagamentoDTOtoFormasDePagamento = new FormasDePagamentoDTOtoFormasDePagamentoFunction();
-	public static final ProdutoHasItensTipoMedidaDTOtoprodutoHasItensTipoMedidaFunction produtoHasItensTipoMedidaDTOtoProdutoHasItensTipoMedida = new ProdutoHasItensTipoMedidaDTOtoprodutoHasItensTipoMedidaFunction();
-	public static final DominioDTOtoDominioFunction dominioDTOtoDominio = new DominioDTOtoDominioFunction();
-	public static final VendaDTOtoVendaFunction vendaDTOtoVenda = new VendaDTOtoVendaFunction();
-	public static final ClienteDTOtoClienteFunction clienteDTOtocliente = new ClienteDTOtoClienteFunction();
-	public static final CaixaDTOtoCaixaFunction caixaDTOtoCaixa = new CaixaDTOtoCaixaFunction();
-	public static final VendaHasItemProdutoDTOtoVendaHasItemProdutoFunction vendaHasItemProdutoDTOtoVendaHasItem = new VendaHasItemProdutoDTOtoVendaHasItemProdutoFunction();
+	public static final CategoriatoCategoriaEntityFunction categoriatoCategoriaEntity = new CategoriatoCategoriaEntityFunction();
+	public static final SubCategoriaToSubCategoriaEntityFunction subCategoriaToSubCategoriaEntity = new SubCategoriaToSubCategoriaEntityFunction();
+	public static final FornecedorToFornecedorEntityFunction fornecedortoFornecedorEntity = new FornecedorToFornecedorEntityFunction();
+	public static final MarcaToMarcaEntityFunction marcaToMarcaEntity = new MarcaToMarcaEntityFunction();
+	public static final MedidaToMedidaEntityFunction medidaToMedidaEntity = new MedidaToMedidaEntityFunction();
+	public static final ItensTipoMedidaToItensTipoMedidaEntityFunction itensTipoMedidaToItensTipoMedidaEntity = new ItensTipoMedidaToItensTipoMedidaEntityFunction();
+	public static final ProdutoToProdutoEntityFunction produtoToProdutoEntity = new ProdutoToProdutoEntityFunction();
+	public static final FormasDePagamentoToFormasDePagamentoEntityFunction formasDePagamentoToFormasDePagamentoEntity = new FormasDePagamentoToFormasDePagamentoEntityFunction();
+	public static final ProdutoHasItensTipoMedidaToProdutoHasItensTipoMedidaEntityFunction produtoHasItensTipoMedidaTOProdutoHasItensTipoMedidaEntity = new ProdutoHasItensTipoMedidaToProdutoHasItensTipoMedidaEntityFunction();
+	public static final DominioToDominioEntityFunction dominioToDominioEntity = new DominioToDominioEntityFunction();
+	public static final VendaToVendaEntityFunction vendaToVendaEntity = new VendaToVendaEntityFunction();
+	public static final ClienteToClienteEntityFunction clienteTOClienteEntity = new ClienteToClienteEntityFunction();
+	public static final CaixaToCaixaEntityFunction caixaToCaixaEntity = new CaixaToCaixaEntityFunction();
+	public static final VendaHasItemProdutoToVendaHasItemProdutoEntityFunction vendaHasItemProdutoToVendaHasItemEntity = new VendaHasItemProdutoToVendaHasItemProdutoEntityFunction();
 
 }

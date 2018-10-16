@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+ 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -80,7 +82,7 @@ public class VendaServiceImpl implements VendaService {
 		vendaDB.setCaixa(caixaRepository.getOne(1));
 		// Date time 
 		vendaDB.setStatus(StatusVendaEnum.Efetuda.name());
-		Venda vResult = JpaFunctions.vendaDTOtoVenda.apply(vendaRepository.saveAndFlush(vendaDB));
+		Venda vResult = JpaFunctions.vendaToVendaEntity.apply(vendaRepository.saveAndFlush(vendaDB));
 		 
 		/**
 		 * Efetuar baixa no estoque...		
@@ -153,7 +155,7 @@ public class VendaServiceImpl implements VendaService {
 		vendaDB.setFormaDePagamento(formaDePagamentoRepository.getOne(venda.getFormaDePagamento().getCodigo()));
 		vendaDB.setCliente(clienteRepository.getOne(venda.getCliente().getCodigo()));
 		vendaDB.setCaixa(caixaRepository.getOne(venda.getCaixa().getCodigo()));
-		return JpaFunctions.vendaDTOtoVenda.apply(vendaRepository.saveAndFlush(vendaDB));
+		return JpaFunctions.vendaToVendaEntity.apply(vendaRepository.saveAndFlush(vendaDB));
 
 	}
 
@@ -176,13 +178,13 @@ public class VendaServiceImpl implements VendaService {
 	@Override
 	@Transactional(readOnly = true)
 	public Venda consultarByCodigo(Venda venda) {
-		return JpaFunctions.vendaDTOtoVenda.apply(vendaRepository.getOne(venda.getCodigo()));
+		return JpaFunctions.vendaToVendaEntity.apply(vendaRepository.getOne(venda.getCodigo()));
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Venda> consultar() {
-		return vendaRepository.findAll().stream().map(JpaFunctions.vendaDTOtoVenda).collect(Collectors.toList());
+		return vendaRepository.findAll().stream().map(JpaFunctions.vendaToVendaEntity).collect(Collectors.toList());
 	}
 
 	 

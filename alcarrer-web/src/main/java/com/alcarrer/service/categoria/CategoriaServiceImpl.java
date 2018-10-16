@@ -40,7 +40,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 			});
 			categoriaDB.setSubCategoriasSet(subCategoria);
 		}
-		return JpaFunctions.categoriaDTOtoCategoria.apply(repository.saveAndFlush(categoriaDB));
+		return JpaFunctions.categoriatoCategoriaEntity.apply(repository.saveAndFlush(categoriaDB));
 	}
 
 	@Override
@@ -57,13 +57,13 @@ public class CategoriaServiceImpl implements CategoriaService {
 		});
 		categoriaDB.getSubCategoriasSet().addAll(subCategoria);
 
-		return JpaFunctions.categoriaDTOtoCategoria.apply(repository.saveAndFlush(categoriaDB));
+		return JpaFunctions.categoriatoCategoriaEntity.apply(repository.saveAndFlush(categoriaDB));
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Categoria consultarByCodigo(Categoria entity) {
-		return JpaFunctions.categoriaDTOtoCategoria.apply(repository.findOne(entity.getCodigo()));
+		return JpaFunctions.categoriatoCategoriaEntity.apply(repository.findOne(entity.getCodigo()));
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Categoria> consultar() {
-		return repository.findAll().stream().map(JpaFunctions.categoriaDTOtoCategoria).collect(Collectors.toList());
+		return repository.findAll().stream().map(JpaFunctions.categoriatoCategoriaEntity).collect(Collectors.toList());
 	}
 
 	@Override

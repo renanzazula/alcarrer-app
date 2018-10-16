@@ -6,7 +6,7 @@ import com.alcarrer.entity.CategoriaEntity;
 import com.alcarrer.function.JpaFunctions;
 import com.alcarrer.model.Categoria;
 
-public class CategoriaDTOtoCategoriaFunction implements java.util.function.Function<CategoriaEntity, Categoria> {
+public class CategoriatoCategoriaEntityFunction implements java.util.function.Function<CategoriaEntity, Categoria> {
 
 	@Override
 	public Categoria apply(CategoriaEntity input) {
@@ -14,7 +14,7 @@ public class CategoriaDTOtoCategoriaFunction implements java.util.function.Funct
 		output.setCodigo(input.getCodigo());
 		output.setNome(input.getNome());
 		output.setDescricao(input.getDescricao());
-		output.setSubCategorias(input.getSubCategoriasSet().stream().map(JpaFunctions.subCategoriaDTOtoCategoria).collect(Collectors.toList()));
+		output.setSubCategorias(input.getSubCategoriasSet().stream().map(JpaFunctions.subCategoriaToSubCategoriaEntity).collect(Collectors.toList()));
 		return output;
 	}
 

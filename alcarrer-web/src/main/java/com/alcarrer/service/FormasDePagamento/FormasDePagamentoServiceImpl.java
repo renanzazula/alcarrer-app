@@ -24,7 +24,7 @@ public class FormasDePagamentoServiceImpl implements FormasDePagamentoService {
 		formasDePagamentoDB.setDescricao(objct.getDescricao());
 		formasDePagamentoDB.setPorcentagemDesconto(objct.getPorcentagemDesconto());
 		formaDePagamentoRepository.saveAndFlush(formasDePagamentoDB);
-		return JpaFunctions.formasDePagamentoDTOtoFormasDePagamento
+		return JpaFunctions.formasDePagamentoToFormasDePagamentoEntity
 				.apply(formaDePagamentoRepository.saveAndFlush(formasDePagamentoDB));
 	}
 
@@ -35,7 +35,7 @@ public class FormasDePagamentoServiceImpl implements FormasDePagamentoService {
 		formasDePagamentoDB.setDescricao(objct.getDescricao());
 		formasDePagamentoDB.setPorcentagemDesconto(objct.getPorcentagemDesconto());
 		formaDePagamentoRepository.saveAndFlush(formasDePagamentoDB);
-		return JpaFunctions.formasDePagamentoDTOtoFormasDePagamento
+		return JpaFunctions.formasDePagamentoToFormasDePagamentoEntity
 				.apply(formaDePagamentoRepository.saveAndFlush(formasDePagamentoDB));
 	}
 
@@ -47,13 +47,13 @@ public class FormasDePagamentoServiceImpl implements FormasDePagamentoService {
 
 	@Override
 	public List<FormasDePagamento> consultar() {
-		return formaDePagamentoRepository.findAll().stream().map(JpaFunctions.formasDePagamentoDTOtoFormasDePagamento)
+		return formaDePagamentoRepository.findAll().stream().map(JpaFunctions.formasDePagamentoToFormasDePagamentoEntity)
 				.collect(Collectors.toList());
 	}
 
 	@Override
 	public FormasDePagamento consultarByCodigo(FormasDePagamento objct) {
-		return JpaFunctions.formasDePagamentoDTOtoFormasDePagamento
+		return JpaFunctions.formasDePagamentoToFormasDePagamentoEntity
 				.apply(formaDePagamentoRepository.findOne(objct.getCodigo()));
 	}
 

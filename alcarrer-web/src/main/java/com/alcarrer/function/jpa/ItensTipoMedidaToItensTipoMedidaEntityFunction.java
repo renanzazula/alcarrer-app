@@ -7,7 +7,7 @@ import com.alcarrer.entity.ItensTipoMedidaEntity;
 import com.alcarrer.function.JpaFunctions;
 import com.alcarrer.model.ItensTipoMedida;
 
-public class ItensTipoMedidaDTOtoItensTipoMedidaFunction implements Function<ItensTipoMedidaEntity, ItensTipoMedida> {
+public class ItensTipoMedidaToItensTipoMedidaEntityFunction implements Function<ItensTipoMedidaEntity, ItensTipoMedida> {
 
 	@Override
 	public ItensTipoMedida apply(ItensTipoMedidaEntity input) {
@@ -17,13 +17,13 @@ public class ItensTipoMedidaDTOtoItensTipoMedidaFunction implements Function<Ite
 		
 		
 		if (input.getCategoria() != null) {
-			output.setCategoria(JpaFunctions.categoriaDTOtoCategoria.apply(input.getCategoria()));
+			output.setCategoria(JpaFunctions.categoriatoCategoriaEntity.apply(input.getCategoria()));
 		}
 		if (input.getSubCategoria() != null) {
-			output.setSubCategoria(JpaFunctions.subCategoriaDTOtoCategoria.apply(input.getSubCategoria()));
+			output.setSubCategoria(JpaFunctions.subCategoriaToSubCategoriaEntity.apply(input.getSubCategoria()));
 		}
 		if (input.getMarca() != null) {
-			output.setMarca(JpaFunctions.marcaDTOtomarca.apply(input.getMarca()));
+			output.setMarca(JpaFunctions.marcaToMarcaEntity.apply(input.getMarca()));
 		}
 		return output;
 	}

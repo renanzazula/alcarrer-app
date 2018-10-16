@@ -24,7 +24,7 @@ public class MarcaServiceImpl implements MarcaService {
 		MarcaEntity marcaDB = new MarcaEntity();
 		marcaDB.setDescricao(entity.getDescricao());
 		marcaDB.setNome(entity.getNome());
-		return JpaFunctions.marcaDTOtomarca.apply(repository.save(marcaDB));
+		return JpaFunctions.marcaToMarcaEntity.apply(repository.save(marcaDB));
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class MarcaServiceImpl implements MarcaService {
 		MarcaEntity marcaDB = repository.getOne(entity.getCodigo());
 		marcaDB.setDescricao(entity.getDescricao());
 		marcaDB.setNome(entity.getNome());
-		return JpaFunctions.marcaDTOtomarca.apply(repository.saveAndFlush(marcaDB));
+		return JpaFunctions.marcaToMarcaEntity.apply(repository.saveAndFlush(marcaDB));
 	}
 
 	@Override
@@ -47,13 +47,13 @@ public class MarcaServiceImpl implements MarcaService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Marca> consultar() {
-		return repository.findAll().stream().map(JpaFunctions.marcaDTOtomarca).collect(Collectors.toList());
+		return repository.findAll().stream().map(JpaFunctions.marcaToMarcaEntity).collect(Collectors.toList());
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Marca consultarByCodigo(Marca marca) {
-		return JpaFunctions.marcaDTOtomarca.apply(repository.findOne(marca.getCodigo()));
+		return JpaFunctions.marcaToMarcaEntity.apply(repository.findOne(marca.getCodigo()));
 	}
 
 }

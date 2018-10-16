@@ -108,7 +108,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 			});
 			produtoDB.setProdutoHasItensTipoMedida(set);
 		}
-		return JpaFunctions.produtoDTOtoProduto.apply(produtoRepository.saveAndFlush(produtoDB));
+		return JpaFunctions.produtoToProdutoEntity.apply(produtoRepository.saveAndFlush(produtoDB));
 	}
 
 	@Override
@@ -177,7 +177,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 			produtoDB.getProdutoHasItensTipoMedida().addAll(produtoHasItensTipoMedidaUpdate);
 		}
 
-		return JpaFunctions.produtoDTOtoProduto.apply(produtoRepository.saveAndFlush(produtoDB));
+		return JpaFunctions.produtoToProdutoEntity.apply(produtoRepository.saveAndFlush(produtoDB));
 	}
 
 	@Override
@@ -199,21 +199,21 @@ public class ProdutoServiceImpl implements ProdutoService {
 	@Transactional(readOnly = true)
 	public Produto consultarByCodigo(Produto produto) {
 		ProdutoEntity p = produtoRepository.findOne(produto.getCodigo());
-		return JpaFunctions.produtoDTOtoProduto.apply(p);
+		return JpaFunctions.produtoToProdutoEntity.apply(p);
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
 	public Produto consultarByBarCode(Produto produto) {
 		ProdutoEntity p = produtoRepository.findByBarCode(produto.getBarCode());
-		return JpaFunctions.produtoDTOtoProduto.apply(p);
+		return JpaFunctions.produtoToProdutoEntity.apply(p);
 	}
 	
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Produto> consultar() {
-		return produtoRepository.findAll().stream().map(JpaFunctions.produtoDTOtoProduto).collect(Collectors.toList());
+		return produtoRepository.findAll().stream().map(JpaFunctions.produtoToProdutoEntity).collect(Collectors.toList());
 	}
 
 }
