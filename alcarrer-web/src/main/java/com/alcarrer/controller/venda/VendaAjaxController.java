@@ -1,4 +1,4 @@
-package com.alcarrer.controller;
+package com.alcarrer.controller.venda;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

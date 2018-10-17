@@ -460,7 +460,7 @@
 							<input type="button" id="novaVenda" value="Nova Venda" style="width: 20%" />
 							
 							<c:if test="${vendaForm.codigo == null}">
-								<input type="button" id="efetuarVenda" value="Efetuar Venda" style="width: 20%" />\	 
+								<input type="button" id="efetuarVenda" value="Efetuar Venda" style="width: 20%" />	 
 							</c:if>
 							
 							<c:if test="${vendaForm.codigo != null}">

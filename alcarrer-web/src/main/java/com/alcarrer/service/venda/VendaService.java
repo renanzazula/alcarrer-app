@@ -15,5 +15,7 @@ public interface VendaService {
 
 	List<Venda> consultar();
 
+	List<Venda> filtrarVenda(Venda venda);
+
 	 
 }

@@ -28,6 +28,11 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		$('#filtrar').on( 'click', function () {  		
+			$("form[name='vendafiltro']").attr('action', 'filtrarVendas');
+  			$("form[name='vendafiltro']").submit();
+		});	
 		 
 		var table = $('#tableConsulta').DataTable();
 		
@@ -82,8 +87,7 @@
 	  						lines = lines +  '<td>' 							+ data.vendaHasItemProduto[key].produtoHasItensTipoMedida.produto.precoVenda    +'</td>';		  						
  	  						lines = lines + '</tr>';	
 	  					});
-	  					// Open this row
-	  					console.log(inicioTable + lines + finalTable);
+	  					// Open this row	  					
 	  		            row.child(fieldsetInicio + inicioTable + lines + finalTable + fieldsetFim).show();
 	  		            tr.addClass('shown');
 	  				},
@@ -92,11 +96,9 @@
 	  				},
 	  				done : function(e) {
 	   				}
-	  			}); 
-	        	
+	  			});	        	
 	        	row.child(fieldsetInicio + inicioTable + finalTable + fieldsetFim).show();
 		        tr.addClass('shown');
-	        		        	
 	        }
 	    } );
 		
@@ -111,12 +113,11 @@
 	    $('#tableConsulta tbody').on('click', 'td.imprimir-recibo', function () {
 	    	console.log($(this).closest('tr').children('td.cod').text());
 	        $("#codigo").val($(this).closest('tr').children('td.cod').text());
-			$("form[name='vendaForm']").submit();
+			$("form[name='vendafiltro']").submit();
 		});
 	});
 </script>
-<form:form method="post" modelAttribute="vendaForm" action="abrirAlterarVenda" name="vendaForm">
-	<form:hidden path="codigo" id="codigo"/>
+<form:form method="post" modelAttribute="vendafiltro" action="filtrar" name="vendafiltro">	 
 	<br>
 		<fieldset>
 			<legend>Consultar Venda</legend>
@@ -146,33 +147,33 @@
 										</td>
 										<td width="20%">
 											<label>Data</label>
-											<form:input path="codigo" type="text" class="field-long" placeholder="DD/MM/YYYY"/>
+											<form:input path="dataHora" type="text" class="field-long" placeholder="dd/MM/yyyy"/>
 										</td>
 										<td width="20%">
-											<label>Status</label> 
-											
-											<select class="field-select">
+											<label>Status</label>											
+											<form:select path="status" cssClass="field-select">											
+												<form:option value="NONE" label="Selecione"/>
 												<c:forEach items="${listStatusVenda}" var="i">
-													<option value="${i}" label="${i}"/>
+													<form:option value="${i}" label="${i}"/>
 												</c:forEach>
-											</select>
-						
+											 </form:select>		
 										</td>
 										<td width="20%">
 											<label>Cliente</label> 
-											<form:input path="codigo" type="text" class="field-long" placeholder="Bar Code"/>
+											<form:input path="cliente" type="text" class="field-long" placeholder="Cliente"/>
 										</td>
 										<td width="20%">
 											<label>Forma Pagamento</label> 										
-											<form:select path="formaDePagamento" cssClass="field-select">				 								
-				 								<c:forEach items="${vendaForm.formasDePagamento}" var="item">
+											<form:select path="formaDePagamento" cssClass="field-select">
+												<form:option value="NONE" label="Selecione"/>				 								
+				 								<c:forEach items="${listFormaDePagamento}" var="item">
 			 						 				<form:option value="${item}" label="${item.nome}"/>
 				 						  		</c:forEach>
 				 						   </form:select> 	
 										</td>
 										<td width="20%">											
 											<label>&nbsp;</label>
-											<input type="button" id="" value="Consultar" />
+											<input type="button" id="filtrar" value="Filtrar" />
 										</td>
 							 		</tr>
 							 	</table>				

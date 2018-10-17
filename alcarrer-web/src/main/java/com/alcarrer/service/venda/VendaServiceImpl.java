@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.alcarrer.entity.FormasDePagamentoEntity;
 import com.alcarrer.entity.ProdutoHasItensTipoMedidaEntity;
 import com.alcarrer.entity.VendaEntity;
 import com.alcarrer.entity.VendaHasItemProdutoEntity;
@@ -187,5 +188,33 @@ public class VendaServiceImpl implements VendaService {
 		return vendaRepository.findAll().stream().map(JpaFunctions.vendaToVendaEntity).collect(Collectors.toList());
 	}
 
-	 
+	@Override
+	@Transactional(readOnly = true)
+	public List<Venda> filtrarVenda(Venda venda) {
+		VendaEntity vendaEntity = new VendaEntity();
+		
+		if(venda.getCodigo() != null) {
+			vendaEntity.setCodigo(venda.getCodigo());
+		}
+		
+		if(venda.getDataHora() != null) {
+			vendaEntity.setDataHora(venda.getDataHora());
+		}
+		
+		if(venda.getStatus() != null) {
+			vendaEntity.setStatus(venda.getStatus());
+		}
+		
+//		vendaEntity.setCliente(venda.getCliente());
+		
+		if(venda.getFormaDePagamento() != null){
+			if(venda.getFormaDePagamento().getCodigo() != null) {
+				FormasDePagamentoEntity formasDePagamentoEntity = new FormasDePagamentoEntity();
+				formasDePagamentoEntity.setCodigo(venda.getFormaDePagamento().getCodigo());
+				vendaEntity.setFormaDePagamento(formasDePagamentoEntity);
+			}
+		}
+		return vendaRepository.filter(vendaEntity).stream().map(JpaFunctions.vendaToVendaEntity).collect(Collectors.toList());
+	} 
+	
 }
