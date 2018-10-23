@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.alcarrer.util.Util;
-
 public class Venda implements Serializable {
 
 	private static final long serialVersionUID = -6612762288260227887L;
