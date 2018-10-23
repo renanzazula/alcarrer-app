@@ -28,7 +28,7 @@ import com.alcarrer.util.ObjectConversor;
 @Controller
 public class VendaConsultaController extends BaseVendaController {
 
-	// Set a form validator
+	// TODO: validar se necessario
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -53,13 +53,23 @@ public class VendaConsultaController extends BaseVendaController {
 	@RequestMapping(value = "/consultarVendas", method = { RequestMethod.GET, RequestMethod.POST })
 	public String consultarVenda(@ModelAttribute("vendaFiltro") VendaFiltro vendaFiltro, BindingResult result,
 			Model model, final RedirectAttributes redirectAttributes) {
-
 		model.addAttribute("listFormaDePagamento", carregarFormaDePagamento());
 		model.addAttribute("vendafiltro", new VendaFiltro());
 		model.addAttribute("listStatusVenda", carregarStatusVenda());
 		model.addAttribute("list", vendaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList(VIEW));
-
 		return VIEW_COLSULTA;
 	}
+	
+	@RequestMapping(value = "/filtrarVendas", method = { RequestMethod.GET, RequestMethod.POST })
+	public String filtrarVendas(@ModelAttribute("vendaFiltro") VendaFiltro vendaFiltro, BindingResult result,
+			Model model, final RedirectAttributes redirectAttributes) {
+		model.addAttribute("listStatusVenda", carregarStatusVenda());
+		model.addAttribute("listFormaDePagamento", carregarFormaDePagamento());
+		model.addAttribute("list", vendaService.filtrarVenda(vendaFiltroToVenda(vendaFiltro)));
+		model.addAttribute("breadCrumbItens", breadCrumbList(VIEW));
+		model.addAttribute("vendafiltro", new VendaFiltro());
+		return VIEW_COLSULTA;
+	}
+
 }

@@ -117,7 +117,6 @@
 			<a href="#">Venda</a>
 			<ul>
 				<li><a href="abrirVenda">Registra Venda</a></li>
-				<li><a href="abrirCancelarVenda">Cancelar Venda</a></li>
 			</ul>
 		</li>
 		

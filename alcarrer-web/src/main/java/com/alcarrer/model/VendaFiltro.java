@@ -3,21 +3,26 @@ package com.alcarrer.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class VendaFiltro implements Serializable{
-	
+import org.springframework.format.annotation.DateTimeFormat;
+
+public class VendaFiltro implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6566111624858515644L;
-	
+
 	private Integer codigo;
-	private Date dataHora;
+	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date data;
+	
 	private String status;
 	private Cliente cliente;
 	private FormasDePagamento formaDePagamento;
-	
+
 	public VendaFiltro() {
-	 
+
 	}
 
 	public Integer getCodigo() {
@@ -28,14 +33,6 @@ public class VendaFiltro implements Serializable{
 		this.codigo = codigo;
 	}
 
-	public Date getDataHora() {
-		return dataHora;
-	}
-
-	public void setDataHora(Date dataHora) {
-		this.dataHora = dataHora;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -44,7 +41,6 @@ public class VendaFiltro implements Serializable{
 		this.status = status;
 	}
 
- 
 	public FormasDePagamento getFormaDePagamento() {
 		return formaDePagamento;
 	}
@@ -61,6 +57,12 @@ public class VendaFiltro implements Serializable{
 		this.cliente = cliente;
 	}
 
-	 
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
 
 }

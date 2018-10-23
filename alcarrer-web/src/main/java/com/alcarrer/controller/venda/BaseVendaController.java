@@ -80,7 +80,7 @@ public class BaseVendaController {
 //		venda.setCliente(cliente);		
 		
 		venda.setCodigo(vendaFiltro.getCodigo());
-		venda.setDataHora(vendaFiltro.getDataHora());		
+		venda.setData(vendaFiltro.getData());		
 		venda.setFormaDePagamento(vendaFiltro.getFormaDePagamento());		
 		venda.setStatus(vendaFiltro.getStatus());		
 		return venda;

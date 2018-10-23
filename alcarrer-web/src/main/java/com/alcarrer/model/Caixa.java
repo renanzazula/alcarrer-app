@@ -3,28 +3,28 @@ package com.alcarrer.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Caixa implements Serializable {
 
 	private static final long serialVersionUID = -6612762288260227887L;
 
 	private Integer codigo;
-	private Date dataHoraAbertura;
-	private Date dataHoraFechamento;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dataAbertura;
+	@DateTimeFormat(pattern = "HH:mm:ss")
+	private Date horaAbertura;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dataFechamento;
+	@DateTimeFormat(pattern = "HH:mm:ss")
+	private Date horaFechamento;
+
 	private Double valorInicial;
 	private Double valorFinal;
 	private Double total;
-	private String statusCaixa;
+	private Double totalVendas;
 
-	public Caixa(Date dataHoraAbertura, Date dataHoraFechamento, Double valorInicial, Double valorFinal, Double total,
-			String statusCaixa) {
-		super();
-		this.dataHoraAbertura = dataHoraAbertura;
-		this.dataHoraFechamento = dataHoraFechamento;
-		this.valorInicial = valorInicial;
-		this.valorFinal = valorFinal;
-		this.total = total;
-		this.statusCaixa = statusCaixa;
-	}
+	private String status;
 
 	public Caixa() {
 
@@ -38,20 +38,36 @@ public class Caixa implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public Date getDataHoraAbertura() {
-		return dataHoraAbertura;
+	public Date getDataAbertura() {
+		return dataAbertura;
 	}
 
-	public void setDataHoraAbertura(Date dataHoraAbertura) {
-		this.dataHoraAbertura = dataHoraAbertura;
+	public void setDataAbertura(Date dataAbertura) {
+		this.dataAbertura = dataAbertura;
 	}
 
-	public Date getDataHoraFechamento() {
-		return dataHoraFechamento;
+	public Date getHoraAbertura() {
+		return horaAbertura;
 	}
 
-	public void setDataHoraFechamento(Date dataHoraFechamento) {
-		this.dataHoraFechamento = dataHoraFechamento;
+	public void setHoraAbertura(Date horaAbertura) {
+		this.horaAbertura = horaAbertura;
+	}
+
+	public Date getDataFechamento() {
+		return dataFechamento;
+	}
+
+	public void setDataFechamento(Date dataFechamento) {
+		this.dataFechamento = dataFechamento;
+	}
+
+	public Date getHoraFechamento() {
+		return horaFechamento;
+	}
+
+	public void setHoraFechamento(Date horaFechamento) {
+		this.horaFechamento = horaFechamento;
 	}
 
 	public Double getValorInicial() {
@@ -78,12 +94,20 @@ public class Caixa implements Serializable {
 		this.total = total;
 	}
 
-	public String getStatusCaixa() {
-		return statusCaixa;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setStatusCaixa(String statusCaixa) {
-		this.statusCaixa = statusCaixa;
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Double getTotalVendas() {
+		return totalVendas;
+	}
+
+	public void setTotalVendas(Double totalVendas) {
+		this.totalVendas = totalVendas;
 	}
 
 }

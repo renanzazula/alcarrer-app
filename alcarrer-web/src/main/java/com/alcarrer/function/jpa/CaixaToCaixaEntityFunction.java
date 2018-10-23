@@ -9,14 +9,17 @@ public class CaixaToCaixaEntityFunction implements Function<CaixaEntity, Caixa> 
 
 	@Override
 	public Caixa apply(CaixaEntity input) {
-		Caixa output = new Caixa();
+		Caixa output = new Caixa();		
 		output.setCodigo(input.getCodigo());
-		output.setDataHoraAbertura(input.getDataHoraAbertura());
-		output.setDataHoraFechamento(input.getDataHoraFechamento());
+		output.setDataAbertura(input.getDataAbertura());
+		output.setHoraAbertura(input.getHoraAbertura());		
+		output.setDataFechamento(input.getDataFechamento());
+		output.setHoraFechamento(input.getHoraFechamento());		
 		output.setValorInicial(input.getValorInicial());
 		output.setValorFinal(input.getValorFinal());
 		output.setTotal(input.getTotal());
-		output.setStatusCaixa(input.getStatusCaixa());
+		output.setTotalVendas(input.getTotalVendas());
+		output.setStatus(input.getStatus());		
 		return output;
 	}
 

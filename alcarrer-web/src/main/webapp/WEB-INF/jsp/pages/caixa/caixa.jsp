@@ -27,9 +27,6 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		
-		 
-
 
 	  	$('#datepicker').datepicker({dateFormat : 'dd/mm/yy'}).val();
 		
@@ -37,19 +34,14 @@
 	  		$("form[name='caixaForm']").attr('action', '${carrergarAbrirCaixaActionUrl}')
 	  		$("form[name='caixaForm']").submit();
 	  	});
-
+		
 		$('#fecharCaixa').on( 'click', function () {
 	  		$("form[name='caixaForm']").attr('action', '${carregarFecharCaixaActionUrl}')
 	  		$("form[name='caixaForm']").submit();
-	  	});
- 
-		$("#valorInicial").maskMoney();	
+	  	}); 
 		
-
-		$("#valorTotal").maskMoney();
-
-		
- 		
+// 		$("#valorInicial").maskMoney();			
+// 		$("#total").maskMoney();				
 	});
 </script>
 
@@ -59,15 +51,14 @@
 		<legend>Gerenciar Caixa</legend>
 		<ul class="form-style-1">
 			<li>
-				<c:if test="${caixaForm.statusCaixa == 'F' or caixaForm.statusCaixa == null}">
+				<c:if test="${caixaForm.status == 'F' or caixaForm.status == null}">
 					<fieldset>
 					<legend  style=" font-weight: bold;">Dados do Caixa</legend>
 						<ul class="form-style-1">
 							<li>
 								<label>Status:<span class="required">*</span></label> 
-									<form:hidden path="statusCaixa"  id="statusCaixa" value="F"/>
-									<input type="text" value="Fechado" class="field-long" readonly="true"
-										placeholder="statusCaixa" style="text-align: center; background-color: red;">
+									<form:hidden path="status"  id="status" value="F"/>
+									<input type="text" value="Fechado" class="field-long" readonly="true" placeholder="status" style="text-align: center; background-color: red;">
  							</li>						
 							<li>
 								<table style="width:100%; text-align: center;">
@@ -84,7 +75,7 @@
 	  					</ul>	  					
 					</fieldset>
 				</c:if>
-				<c:if test="${caixaForm.statusCaixa == 'A'}">
+				<c:if test="${caixaForm.status == 'A'}">
 					<fieldset>
 						<legend  style=" font-weight: bold;">Dados do Caixa</legend>
 						<ul class="form-style-1">
@@ -119,21 +110,27 @@
 								 	<form:input path="valorInicial" type="text" class="field-long" 
 										id="valorInicial" placeholder="0,00" data-thousands="." data-decimal=","
 										style="text-align:center; font-size: 150%; font-weight: bold;"
-										 readonly="true"/>							
-								 								 								
+										 readonly="true"/>															 								 								
 							</li>
 							<li>
-								<label>Total Vendas</label>
-								<form:input path="valorTotal" type="text" class="field-long" 
-									id="valorTotal" placeholder="0,00"  data-thousands="." data-decimal=","
+								<label>Vendas</label>
+								<form:input path="totalVendas" type="text" class="field-long" 
+									id="total" placeholder="0,00"  data-thousands="." data-decimal=","
 									style="text-align:center; font-size: 150%; font-weight: bold;"
 									readonly="true"/> 			 
 							</li>
 							<li>
+								<label>Total Caixa</label>
+								<form:input path="total" type="text" class="field-long" 
+									id="total" placeholder="0,00"  data-thousands="." data-decimal=","
+									style="text-align:center; font-size: 150%; font-weight: bold;"
+									readonly="true"/> 			 
+							</li>							
+							<li>
 								<label>Status:<span class="required">*</span></label> 
-								<form:hidden path="statusCaixa"  id="statusCaixa" value="A"/>
+								<form:hidden path="status"  id="status" value="A"/>
  								<input type="text" value="Aberto" class="field-long" readonly="true"
-									placeholder="statusCaixa" style="text-align: center; background-color: green;">
+									placeholder="status" style="text-align: center; background-color: green;">
  							</li>
 						</ul>
 					</fieldset>	
@@ -163,9 +160,7 @@
 					 			<input type="button" value="Fechar Caixa" class="field-long" id="fecharCaixa"/>
  					 		</li>
 						</ul>
-					</fieldset>
-					
-					
+					</fieldset>							
 				</c:if>
  			</li>
 		</ul>

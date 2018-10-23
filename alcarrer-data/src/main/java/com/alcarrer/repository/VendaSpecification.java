@@ -29,8 +29,8 @@ public class VendaSpecification implements Specification<VendaEntity> {
 			p.getExpressions().add(cb.equal(root.get("codigo"), venda.getCodigo()));
 		}
 
-		if (venda.getDataHora() != null) {
-			p.getExpressions().add(cb.equal(root.get("dataHora"), venda.getDataHora()));
+		if (venda.getData() != null) {
+			p.getExpressions().add(cb.equal(root.get("data"), venda.getData()));
 		}
 
 		if (venda.getStatus() != null) {

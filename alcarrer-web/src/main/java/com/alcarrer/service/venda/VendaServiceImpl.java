@@ -5,12 +5,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
- 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.alcarrer.entity.CaixaEntity;
 import com.alcarrer.entity.FormasDePagamentoEntity;
 import com.alcarrer.entity.ProdutoHasItensTipoMedidaEntity;
 import com.alcarrer.entity.VendaEntity;
@@ -24,6 +23,7 @@ import com.alcarrer.repository.ClienteRepository;
 import com.alcarrer.repository.FormaDePagamentoRepository;
 import com.alcarrer.repository.ProdutoHasItensTipoMedidaRepository;
 import com.alcarrer.repository.VendaRepository;
+import com.alcarrer.service.caixa.CaixaService;
 
 @Service
 public class VendaServiceImpl implements VendaService {
@@ -43,6 +43,9 @@ public class VendaServiceImpl implements VendaService {
 	@Autowired
 	private ProdutoHasItensTipoMedidaRepository produtoHasItensTipoMedidaRepository;
 
+	@Autowired
+	private CaixaService caixaService;
+	
 	@Override
 	@Transactional
 	public Venda incluir(Venda venda) {
@@ -80,11 +83,18 @@ public class VendaServiceImpl implements VendaService {
 		vendaDB.setValorTotal(venda.getSubTotal()); // posso considerar valor total é sub total venda... TODO: validar
 		vendaDB.setFormaDePagamento(formaDePagamentoRepository.getOne(venda.getFormaDePagamento().getCodigo()));
 		vendaDB.setCliente(clienteRepository.getOne(1));
-		vendaDB.setCaixa(caixaRepository.getOne(1));
-		// Date time 
+
+		CaixaEntity caixa = caixaRepository.buscarUltimoCaixa();
+		vendaDB.setCaixa(caixa);
+ 
 		vendaDB.setStatus(StatusVendaEnum.Efetuda.name());
 		Venda vResult = JpaFunctions.vendaToVendaEntity.apply(vendaRepository.saveAndFlush(vendaDB));
-		 
+
+		/**
+		 * Update valor total caixa
+		 */
+		caixaService.updateValorCaixa(caixa, venda);
+		
 		/**
 		 * Efetuar baixa no estoque...		
 		 */
@@ -109,6 +119,8 @@ public class VendaServiceImpl implements VendaService {
 			produtoHasItensTipoMedidaRepository.saveAndFlush(produtoHasItensTipoMedida);
 		});
 	}
+	
+	
 	
 	/**
 	 * adiciona quantidade tabela produto_has_itens_tipo_medida 
@@ -197,8 +209,8 @@ public class VendaServiceImpl implements VendaService {
 			vendaEntity.setCodigo(venda.getCodigo());
 		}
 		
-		if(venda.getDataHora() != null) {
-			vendaEntity.setDataHora(venda.getDataHora());
+		if(venda.getData() != null) {
+			vendaEntity.setData(venda.getData());
 		}
 		
 		if(venda.getStatus() != null) {

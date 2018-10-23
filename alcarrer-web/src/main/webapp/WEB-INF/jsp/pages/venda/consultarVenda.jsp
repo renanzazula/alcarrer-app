@@ -20,7 +20,7 @@
 	    background: url('resources/images/details_close.png') no-repeat center center;
 	}
 	
-	td.imprimir-recibo{
+	td.editarVenda{
 		background: url('resources/images/edit.png') no-repeat center center;
 	}
 	
@@ -110,10 +110,11 @@
 	    	return str_check;  
 	    }
 	    
-	    $('#tableConsulta tbody').on('click', 'td.imprimir-recibo', function () {
-	    	console.log($(this).closest('tr').children('td.cod').text());
+	    $('#tableConsulta tbody').on('click', 'td.editarVenda', function () {
+// 	    	console.log($(this).closest('tr').children('td.cod').text());
 	        $("#codigo").val($(this).closest('tr').children('td.cod').text());
-			$("form[name='vendafiltro']").submit();
+	        $("form[name='vendafiltro']").attr('action', 'abrirAlterarVenda');
+	        $("form[name='vendafiltro']").submit();
 		});
 	});
 </script>
@@ -147,7 +148,7 @@
 										</td>
 										<td width="20%">
 											<label>Data</label>
-											<form:input path="dataHora" type="text" class="field-long" placeholder="dd/MM/yyyy"/>
+											<form:input path="data" type="text" class="field-long" placeholder="dd/MM/yyyy"/>
 										</td>
 										<td width="20%">
 											<label>Status</label>											
@@ -196,11 +197,11 @@
 										<th>Status</th> 
 										<th>Cliente</th>
 										<th>Forma De Pagamento</th>
-										<th>Quantidade itens</th>
+										<th>Quantidade</th>
 										<th>Desconto</th>   
 										<th>Pagamento</th> 
-										<th>Valor Pendente</th>
-										<th>Valor Total</th> 
+										<th>Pendente</th>
+										<th>Total</th> 
 										<th></th>
 									</tr>
 								</thead>				
@@ -209,8 +210,8 @@
 										<tr>
 											<td class="details-control"></td>				
 											<td class="cod">${i.codigo}</td>
-											<td>${i.dataHoraFormat}</td>
-											<td>${i.horaFormat}</td>
+											<td>${i.data}</td>
+											<td>${i.hora}</td>
 											<td>${i.status}</td>
 											<td>${i.cliente.codigo}</td>
 											<td>${i.formaDePagamento.nome}</td>
@@ -219,7 +220,12 @@
 											<td>${i.pagamento}</td> 
 											<td>${i.valorPendente}</td>
 											<td>${i.valorTotal}</td> 
-											<td class="imprimir-recibo"></td>			
+											<c:if test="${i.status != 'Cancelado'}">
+												<td class="editarVenda"></td>
+											</c:if>
+											<c:if test="${i.status == 'Cancelado'}">
+												<td></td>
+											</c:if>			
 										</tr>
 									</c:forEach>	
 								</tbody>

@@ -1,7 +1,6 @@
 package com.alcarrer.util;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -46,6 +45,13 @@ public class Util {
 	}
 
 	public static Double somaValores(Double valor1, Double valor2) {
+		if(valor1 == null) {
+			valor1 = new Double(0);
+		}
+		if(valor2 == null) {
+			valor2 = new Double(0);
+		}
+		
 		return Double.sum(valor1, valor2);
 	}
 

@@ -52,12 +52,12 @@
 						<li>
 							<table style="width:100%">
 								<tr>
-									<td>
-										<label>Código</label>
-										<form:input path="codigo" type="text" class="field-long"
-											id="codigo" placeholder="codigo" style="color:red; text-align:center;" 
-											readonly="true"/> 	
-									</td>
+<!-- 									<td> -->
+<!-- 										<label>Código</label> -->
+<%-- 										<form:input path="codigo" type="text" class="field-long" --%>
+<%-- 											id="codigo" placeholder="codigo" style="color:red; text-align:center;"  --%>
+<%-- 											readonly="true"/> 	 --%>
+<!-- 									</td> -->
 									<td>
 										<label>Data Abertura</label>
 										<form:input path="dataAbertura"
@@ -70,7 +70,7 @@
 										<form:input path="horaAbertura"
 											type="text" class="field-long" id="horaAbertura"
 											placeholder="Hora Abertura" style="color:red; text-align:center;" 
-											readonly="true"/> 													 
+											readonly="true" /> 													 
 						 			</td>
 						 		</tr>
 						 	</table>
@@ -83,9 +83,9 @@
  						</li>
 						<li>
 						 	<label>Status:<span class="required">*</span></label> 
-							<form:hidden path="statusCaixa"  id="statusCaixa" value="F"/>
+							<form:hidden path="status"  id="status" value="F"/>
 							<input type="text" value="Fechado" class="field-long"
-								placeholder="statusCaixa" style="text-align: center; background-color: red;">
+								placeholder="status" style="text-align: center; background-color: red;">
 						</li>
 						<li>
 					 		<input type="button" value="Abrir Caixa" class="field-long" id="abrirCaixa"/>

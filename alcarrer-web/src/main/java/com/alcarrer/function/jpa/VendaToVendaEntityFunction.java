@@ -13,7 +13,8 @@ public class VendaToVendaEntityFunction implements Function<VendaEntity, Venda> 
 	public Venda apply(VendaEntity input) {
 		Venda output = new Venda();
 		output.setCodigo(input.getCodigo());
-		output.setDataHora(input.getDataHora());
+		output.setData(input.getData());
+		output.setHora(input.getHora());
 		output.setValorTotal(input.getValorTotal());
 		output.setStatus(input.getStatus());
 		output.setQuantidade(input.getQuantidade());

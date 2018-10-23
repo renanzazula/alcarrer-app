@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -28,9 +30,15 @@ public class VendaEntity implements Serializable {
 	private Integer codigo;
 
 	@CreationTimestamp
-	@Column(name = "dataHora")
-	private Date dataHora;
+	@Column(name = "data")
+	@Temporal(TemporalType.DATE)
+  	private Date data;
 
+	@CreationTimestamp
+	@Column(name = "hora")
+	@Temporal(TemporalType.TIME)
+	private Date hora;
+	
 	@Column(name = "valorTotal")
 	private Double valorTotal;
 
@@ -88,15 +96,7 @@ public class VendaEntity implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public Date getDataHora() {
-		return dataHora;
-	}
-
-	public void setDataHora(Date dataHora) {
-		this.dataHora = dataHora;
-	}
-
-	public Double getValorTotal() {
+ 	public Double getValorTotal() {
 		return valorTotal;
 	}
 
@@ -208,4 +208,21 @@ public class VendaEntity implements Serializable {
 		this.vendaHasItemProduto = vendaHasItemProduto;
 	}
 
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public Date getHora() {
+		return hora;
+	}
+
+	public void setHora(Date hora) {
+		this.hora = hora;
+	}
+
+	
 }

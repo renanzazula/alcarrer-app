@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.alcarrer.util.Util;
 
 public class Venda implements Serializable {
@@ -11,11 +13,13 @@ public class Venda implements Serializable {
 	private static final long serialVersionUID = -6612762288260227887L;
 
 	private Integer codigo;
-	private Date dataHora;
 
-	private String dataHoraFormat;
-	private String horaFormat;
-	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date data;
+
+	@DateTimeFormat(pattern = "HH:mm:ss")
+	private Date hora;
+
 	private Double valorTotal;
 	private String status;
 	private Caixa caixa;
@@ -49,14 +53,6 @@ public class Venda implements Serializable {
 
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
-	}
-
-	public Date getDataHora() {
-		return dataHora;
-	}
-
-	public void setDataHora(Date dataHora) {
-		this.dataHora = dataHora;
 	}
 
 	public Double getValorTotal() {
@@ -187,12 +183,19 @@ public class Venda implements Serializable {
 		this.vendaHasItemProduto = vendaHasItemProduto;
 	}
 
-	public String getDataHoraFormat() {
-		return Util.formateDate(dataHora, "dd/MM/yyyy");
+	public Date getData() {
+		return data;
 	}
 
-	public String getHoraFormat() {
-		return Util.formateDate(dataHora, "HH:MM:ss");
+	public void setData(Date data) {
+		this.data = data;
 	}
 
+	public Date getHora() {
+		return hora;
+	}
+
+	public void setHora(Date hora) {
+		this.hora = hora;
+	}	 
 }
