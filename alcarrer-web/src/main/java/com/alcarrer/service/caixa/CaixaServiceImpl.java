@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alcarrer.entity.CaixaEntity;
-import com.alcarrer.entity.VendaEntity;
 import com.alcarrer.function.JpaFunctions;
 import com.alcarrer.model.Caixa;
 import com.alcarrer.model.Venda;
@@ -32,6 +31,8 @@ public class CaixaServiceImpl implements CaixaService {
 		caixaEntity.setValorInicial(caixa.getValorInicial());
 		caixaEntity.setValorFinal(new Double(0));
 		caixaEntity.setTotal(new Double(0));
+		caixaEntity.setTotalDesconto(new Double(0));
+		caixaEntity.setTotalVendas(new Double(0));
 		caixaEntity.setStatus("A");
 		caixaEntity.setDataAbertura(new Date());
 		caixaEntity.setHoraAbertura(new Date());
@@ -42,8 +43,6 @@ public class CaixaServiceImpl implements CaixaService {
 	@Transactional
 	public Caixa fecharCaixa(Caixa caixa) {
 		CaixaEntity caixaEntity = repository.getOne(caixa.getCodigo());
-		caixaEntity.setValorFinal(caixa.getValorFinal());
-		caixaEntity.setTotal(caixa.getTotal());
 		caixaEntity.setStatus("F");
 		caixaEntity.setDataFechamento(new Date());
 		caixaEntity.setHoraFechamento(new Date());
@@ -63,6 +62,8 @@ public class CaixaServiceImpl implements CaixaService {
 			caixa.setHoraAbertura(new java.util.Date());
 			caixa.setValorInicial(new Double(0));
 			caixa.setValorFinal(new Double(0));
+			caixa.setTotalVendas(new Double(0));
+			caixa.setTotalDesconto(new Double(0));
 			caixa.setTotal(new Double(0));			
 			caixa.setStatus("F");
 			return caixa;

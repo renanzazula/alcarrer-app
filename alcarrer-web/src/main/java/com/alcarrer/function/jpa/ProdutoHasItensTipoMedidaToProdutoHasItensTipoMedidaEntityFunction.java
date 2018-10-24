@@ -22,9 +22,10 @@ public class ProdutoHasItensTipoMedidaToProdutoHasItensTipoMedidaEntityFunction
 		if (input.getItensTipoMedida() != null) {
 			output.setItensTipoMedida(JpaFunctions.itensTipoMedidaToItensTipoMedidaEntity.apply(input.getItensTipoMedida()));
 		}
-//		output.setProduto(JpaFunctions.produtoDTOtoProduto.apply(input.getProduto()));
 		
-		output.setProduto(produtoEntityToProduto(input.getProduto()));
+		if(input.getProduto()!= null) {
+			output.setProduto(produtoEntityToProduto(input.getProduto()));
+		}
 		
 		output.setQuantidade(input.getQuantidade());
 		output.setValorUnitario(input.getValorUnitario());

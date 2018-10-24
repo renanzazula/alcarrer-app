@@ -19,6 +19,7 @@ public class CaixaToCaixaEntityFunction implements Function<CaixaEntity, Caixa> 
 		output.setValorFinal(input.getValorFinal());
 		output.setTotal(input.getTotal());
 		output.setTotalVendas(input.getTotalVendas());
+		output.setTotalDesconto(input.getTotalDesconto());
 		output.setStatus(input.getStatus());		
 		return output;
 	}

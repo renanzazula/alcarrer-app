@@ -23,6 +23,7 @@ public class Caixa implements Serializable {
 	private Double valorFinal;
 	private Double total;
 	private Double totalVendas;
+	private Double totalDesconto;
 
 	private String status;
 
@@ -108,6 +109,14 @@ public class Caixa implements Serializable {
 
 	public void setTotalVendas(Double totalVendas) {
 		this.totalVendas = totalVendas;
+	}
+
+	public Double getTotalDesconto() {
+		return totalDesconto;
+	}
+
+	public void setTotalDesconto(Double totalDesconto) {
+		this.totalDesconto = totalDesconto;
 	}
 
 }

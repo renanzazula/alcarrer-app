@@ -113,8 +113,15 @@
 										 readonly="true"/>															 								 								
 							</li>
 							<li>
-								<label>Vendas</label>
+								<label>Total Vendas</label>
 								<form:input path="totalVendas" type="text" class="field-long" 
+									id="total" placeholder="0,00"  data-thousands="." data-decimal=","
+									style="text-align:center; font-size: 150%; font-weight: bold;"
+									readonly="true"/> 			 
+							</li>
+							<li>
+								<label>Total Descontos</label>
+								<form:input path="totalDesconto" type="text" class="field-long" 
 									id="total" placeholder="0,00"  data-thousands="." data-decimal=","
 									style="text-align:center; font-size: 150%; font-weight: bold;"
 									readonly="true"/> 			 

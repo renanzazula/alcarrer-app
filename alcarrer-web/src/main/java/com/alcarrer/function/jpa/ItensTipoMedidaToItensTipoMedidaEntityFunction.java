@@ -1,7 +1,6 @@
 package com.alcarrer.function.jpa;
 
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import com.alcarrer.entity.ItensTipoMedidaEntity;
 import com.alcarrer.function.JpaFunctions;
