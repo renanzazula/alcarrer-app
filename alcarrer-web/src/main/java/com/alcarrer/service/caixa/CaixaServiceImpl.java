@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alcarrer.entity.CaixaEntity;
+import com.alcarrer.enums.StatusCaixaEnum;
 import com.alcarrer.function.JpaFunctions;
 import com.alcarrer.model.Caixa;
 import com.alcarrer.model.Venda;
@@ -33,7 +34,7 @@ public class CaixaServiceImpl implements CaixaService {
 		caixaEntity.setTotal(new Double(0));
 		caixaEntity.setTotalDesconto(new Double(0));
 		caixaEntity.setTotalVendas(new Double(0));
-		caixaEntity.setStatus("A");
+		caixaEntity.setStatus(StatusCaixaEnum.A);
 		caixaEntity.setDataAbertura(new Date());
 		caixaEntity.setHoraAbertura(new Date());
 		return  JpaFunctions.caixaToCaixaEntity.apply(repository.saveAndFlush(caixaEntity));
@@ -43,7 +44,7 @@ public class CaixaServiceImpl implements CaixaService {
 	@Transactional
 	public Caixa fecharCaixa(Caixa caixa) {
 		CaixaEntity caixaEntity = repository.getOne(caixa.getCodigo());
-		caixaEntity.setStatus("F");
+		caixaEntity.setStatus(StatusCaixaEnum.F);
 		caixaEntity.setDataFechamento(new Date());
 		caixaEntity.setHoraFechamento(new Date());
 		return  JpaFunctions.caixaToCaixaEntity.apply(repository.saveAndFlush(caixaEntity));
@@ -65,7 +66,7 @@ public class CaixaServiceImpl implements CaixaService {
 			caixa.setTotalVendas(new Double(0));
 			caixa.setTotalDesconto(new Double(0));
 			caixa.setTotal(new Double(0));			
-			caixa.setStatus("F");
+			caixa.setStatus(StatusCaixaEnum.F.toString());
 			return caixa;
  		}
 	}

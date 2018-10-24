@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +14,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.ColumnDefault;
+
+import com.alcarrer.enums.StatusCaixaEnum;
 
 @Entity(name = "caixa")
 public class CaixaEntity implements Serializable {
@@ -59,8 +63,9 @@ public class CaixaEntity implements Serializable {
 	@Column(name = "totalDesconto")
 	private Double totalDesconto;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "status")
-	private String status;
+	private StatusCaixaEnum status;
 
 	public CaixaEntity() {
 
@@ -110,14 +115,7 @@ public class CaixaEntity implements Serializable {
 		return valorInicial;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
+	 
 	public void setValorInicial(Double valorInicial) {
 		this.valorInicial = valorInicial;
 	}
@@ -153,5 +151,15 @@ public class CaixaEntity implements Serializable {
 	public void setTotalDesconto(Double totalDesconto) {
 		this.totalDesconto = totalDesconto;
 	}
+
+	public StatusCaixaEnum getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusCaixaEnum status) {
+		this.status = status;
+	}
+	
+	
 
 }

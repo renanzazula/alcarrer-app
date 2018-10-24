@@ -24,7 +24,6 @@ public class Caixa implements Serializable {
 	private Double total;
 	private Double totalVendas;
 	private Double totalDesconto;
-
 	private String status;
 
 	public Caixa() {

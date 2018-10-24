@@ -86,20 +86,26 @@ public class VendaServiceImpl implements VendaService {
 
 		CaixaEntity caixa = caixaRepository.buscarUltimoCaixa();
 		vendaDB.setCaixa(caixa);
- 
-		vendaDB.setStatus(StatusVendaEnum.Efetuda.name());
-		Venda vResult = JpaFunctions.vendaToVendaEntity.apply(vendaRepository.saveAndFlush(vendaDB));
-
-		/**
-		 * Update valor total caixa
-		 */
-		caixaService.updateValorCaixa(caixa, venda);
 		
-		/**
-		 * Efetuar baixa no estoque...		
-		 */
-		removerProdutoDoEstoque(venda);
+		Venda vResult = null;
+//		FIXME: 
+		if(caixa != null) {
+			if(caixa.getStatus().name().equals("A")) {
+				// if caixa satus F error 
+				vendaDB.setStatus(StatusVendaEnum.Efetuda.name());
+				vResult = JpaFunctions.vendaToVendaEntity.apply(vendaRepository.saveAndFlush(vendaDB));
 		
+				/**
+				 * Update valor total caixa
+				 */
+				caixaService.updateValorCaixa(caixa, venda);
+				
+				/**
+				 * Efetuar baixa no estoque...		
+				 */
+				removerProdutoDoEstoque(venda);
+			} 
+		}
 		return vResult;
 	}
 

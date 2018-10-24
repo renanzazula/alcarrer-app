@@ -2,6 +2,7 @@ package com.alcarrer.service.produto;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -205,8 +206,8 @@ public class ProdutoServiceImpl implements ProdutoService {
 	@Override
 	@Transactional(readOnly = true)
 	public Produto consultarByBarCode(Produto produto) {
-		ProdutoEntity p = produtoRepository.findByBarCode(produto.getBarCode());
-		return JpaFunctions.produtoToProdutoEntity.apply(p);
+		Optional<ProdutoEntity> p = produtoRepository.findByBarCode(produto.getBarCode().trim());
+		return JpaFunctions.produtoToProdutoEntity.apply(p.get());
 	}
 	
 

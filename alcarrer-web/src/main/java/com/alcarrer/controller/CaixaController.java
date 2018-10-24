@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.alcarrer.enums.StatusCaixaEnum;
 import com.alcarrer.model.BreadCrumb;
 import com.alcarrer.model.Caixa;
 import com.alcarrer.service.caixa.CaixaService;
@@ -63,7 +64,7 @@ public class CaixaController {
 		
 		// buscar se possui caixa aberto
 		caixa = caixaService.buscarUltimoCaixa();
-		if (caixa.getStatus().equalsIgnoreCase("F")) {
+		if (caixa.getStatus().toString().equalsIgnoreCase("F")) {
 			
 			model.addAttribute("caixaForm", caixa);
 			model.addAttribute("breadCrumbItens", breadCrumbList("F"));
@@ -90,14 +91,14 @@ public class CaixaController {
 	public String carrergarAbrirCaixa(@ModelAttribute("caixaForm") @Validated Caixa caixa, BindingResult result,
 			Model model, final RedirectAttributes redirectAttributes) {
 
-		if (caixa.getStatus() == null || caixa.getStatus().equalsIgnoreCase("F")) {
+		if (caixa.getStatus() == null || caixa.getStatus().toString().equalsIgnoreCase("F")) {
 			caixa.setCodigo(caixaService.gerarCodigoCaixa());
 			caixa.setDataAbertura(new java.util.Date());
 			caixa.setHoraAbertura(new java.util.Date());
 			caixa.setValorInicial(new Double(0));
 			caixa.setValorFinal(new Double(0));
 			caixa.setTotal(new Double(0));
-			caixa.setStatus("F");
+			caixa.setStatus(StatusCaixaEnum.F.toString());
 			model.addAttribute("caixaForm", caixa);
 			model.addAttribute("breadCrumbItens", breadCrumbList("F"));
 
@@ -139,7 +140,7 @@ public class CaixaController {
  		if (caixa.getValorFinal() == null) {
 			caixa.setValorFinal(new Double(0));
 		}
- 		caixa.setStatus("F");
+ 		caixa.setStatus(StatusCaixaEnum.F.toString());
 		caixa.setTotal(Util.somaValores(caixa.getValorInicial(), caixa.getValorFinal()));
   		caixaService.fecharCaixa(caixa);
  		model.addAttribute("breadCrumbItens", breadCrumbList("F"));
