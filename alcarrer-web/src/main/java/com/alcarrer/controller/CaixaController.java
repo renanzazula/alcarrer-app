@@ -1,19 +1,14 @@
-	package com.alcarrer.controller;
+package com.alcarrer.controller;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,7 +18,6 @@ import com.alcarrer.enums.StatusCaixaEnum;
 import com.alcarrer.model.BreadCrumb;
 import com.alcarrer.model.Caixa;
 import com.alcarrer.service.caixa.CaixaService;
-import com.alcarrer.util.ObjectConversor;
 import com.alcarrer.util.Util;
 
 @Controller
@@ -41,17 +35,6 @@ public class CaixaController {
 	@Autowired
 	private CaixaService caixaService;
 	
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		String pattern = "#,##0.##";
-		DecimalFormatSymbols symbols = new DecimalFormatSymbols();
-		symbols.setDecimalSeparator(',');
-		symbols.setGroupingSeparator('.');		
-		DecimalFormat decimalFormat = new DecimalFormat(pattern, symbols);
-		binder.registerCustomEditor(Double.class, new CustomNumberEditor(Double.class, decimalFormat, true));
-		binder.registerCustomEditor(Caixa.class, new ObjectConversor(Caixa.class));
-	}
-
 	/**
 	 * Metodo caixa abre a tela abrir caixa
 	 * 

@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
+import com.alcarrer.util.Constants;
 
 public class Venda implements Serializable {
 
@@ -12,30 +16,48 @@ public class Venda implements Serializable {
 
 	private Integer codigo;
 
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = Constants.PATTERN_DATE_FORMAT)
 	private Date data;
 
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	@DateTimeFormat(pattern = Constants.PATTERN_TIME_FORMAT)
 	private Date hora;
 
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
 	private Double valorTotal;
+	
+	@NumberFormat(style=Style.NUMBER)
+	private long quantidade;
+	
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
+	private Double subTotal;
+	
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
+	private Double valorPendente;
+	
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
+	private Double valorPago;
+	
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
+	private Double desconto;
+	
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
+	private Double totalApagar;
+	
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
+	private Double troco;
+	
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
+	private Double pagamento;
+
 	private String status;
 	private Caixa caixa;
 	private Cliente cliente;
+
+	private List<Produto> produtos;
 	private FormasDePagamento formaDePagamento;
 	private List<FormasDePagamento> formasDePagamento;
-	private List<Produto> produtos;
-
-	private long quantidade;
-	private Double subTotal;
-	private Double valorPendente;
-	private Double valorPago;
-	private Double desconto;
-	private Double totalApagar;
-	private Double troco;
-	private Double pagamento;
 	private List<VendaHasItemProduto> vendaHasItemProduto;
-
+	
 	public Venda() {
 		super();
 	}

@@ -29,6 +29,8 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+// 	  	$('#datepicker').datepicker({dateFormat : 'dd/mm/yyyy'}).val();
+		
 		$('#filtrar').on( 'click', function () {  		
 			$("form[name='vendafiltro']").attr('action', 'filtrarVendas');
   			$("form[name='vendafiltro']").submit();
@@ -148,7 +150,7 @@
 										</td>
 										<td width="20%">
 											<label>Data</label>
-											<form:input path="data" type="text" class="field-long" placeholder="dd/MM/yyyy"/>
+											<form:input path="data" id="datepicker" type="text" class="field-long" placeholder="dd/MM/yyyy"/>
 										</td>
 										<td width="20%">
 											<label>Status</label>											

@@ -25,10 +25,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		 
- 	  	$('#datepicker').datepicker({dateFormat : 'dd/mm/yy'}).val();
-
-		$("#valorInicial").maskMoney();	
-		$("#valorInicial").focus();
+// 		$("#valorInicial").maskMoney();	
+// 		$("#valorInicial").focus();
 
 		$("#valorFinal").maskMoney();
 		$("#valorFinal").focus();

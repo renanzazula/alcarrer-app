@@ -4,26 +4,44 @@ import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
+import com.alcarrer.util.Constants;
 
 public class Caixa implements Serializable {
 
 	private static final long serialVersionUID = -6612762288260227887L;
 
 	private Integer codigo;
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	
+	@DateTimeFormat(pattern = Constants.PATTERN_DATE_FORMAT)
 	private Date dataAbertura;
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	
+	@DateTimeFormat(pattern = Constants.PATTERN_TIME_FORMAT)
 	private Date horaAbertura;
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	
+	@DateTimeFormat(pattern = Constants.PATTERN_DATE_FORMAT)
 	private Date dataFechamento;
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	
+	@DateTimeFormat(pattern = Constants.PATTERN_TIME_FORMAT)
 	private Date horaFechamento;
 
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
 	private Double valorInicial;
+
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
 	private Double valorFinal;
+
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
 	private Double total;
+
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
 	private Double totalVendas;
+
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
 	private Double totalDesconto;
+	 
 	private String status;
 
 	public Caixa() {

@@ -28,7 +28,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
-	  	$('#datepicker').datepicker({dateFormat : 'dd/mm/yy'}).val();
+	  	 
 		
 		$('#abrirCaixa').on( 'click', function () {
 	  		$("form[name='caixaForm']").attr('action', '${carrergarAbrirCaixaActionUrl}')
@@ -39,9 +39,7 @@
 	  		$("form[name='caixaForm']").attr('action', '${carregarFecharCaixaActionUrl}')
 	  		$("form[name='caixaForm']").submit();
 	  	}); 
-		
-// 		$("#valorInicial").maskMoney();			
-// 		$("#total").maskMoney();				
+
 	});
 </script>
 
@@ -108,35 +106,30 @@
 							<li>
 								<label>Valor Inicial</label> 
 								 	<form:input path="valorInicial" type="text" class="field-long" 
-										id="valorInicial" placeholder="0,00" data-thousands="." data-decimal=","
-										style="text-align:center; font-size: 150%; font-weight: bold;"
-										 readonly="true"/>															 								 								
+										id="valorInicial"  style="text-align:center; font-size: 150%; font-weight: bold;" readonly="true"/>															 								 								
 							</li>
 							<li>
 								<label>Total Vendas</label>
 								<form:input path="totalVendas" type="text" class="field-long" 
-									id="total" placeholder="0,00"  data-thousands="." data-decimal=","
-									style="text-align:center; font-size: 150%; font-weight: bold;"
+									id="total" style="text-align:center; font-size: 150%; font-weight: bold;"
 									readonly="true"/> 			 
 							</li>
 							<li>
 								<label>Total Descontos</label>
 								<form:input path="totalDesconto" type="text" class="field-long" 
-									id="total" placeholder="0,00"  data-thousands="." data-decimal=","
-									style="text-align:center; font-size: 150%; font-weight: bold;"
+									id="total" style="text-align:center; font-size: 150%; font-weight: bold;"
 									readonly="true"/> 			 
 							</li>
 							<li>
 								<label>Total Caixa</label>
 								<form:input path="total" type="text" class="field-long" 
-									id="total" placeholder="0,00"  data-thousands="." data-decimal=","
-									style="text-align:center; font-size: 150%; font-weight: bold;"
+									id="total" style="text-align:center; font-size: 150%; font-weight: bold;"
 									readonly="true"/> 			 
 							</li>							
 							<li>
 								<label>Status:<span class="required">*</span></label> 
 								<form:hidden path="status"  id="status" value="A"/>
- 								<input type="text" value="Aberto" class="field-long" readonly="true"
+ 								<input type="text" value="Aberto" class="field-long" readonly="readonly"
 									placeholder="status" style="text-align: center; background-color: green;">
  							</li>
 						</ul>

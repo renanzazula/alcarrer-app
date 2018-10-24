@@ -32,10 +32,7 @@
 	  		$("form[name='caixaForm']").attr('action', '${abrirCaixaActionUrl}')
 	  		$("form[name='caixaForm']").submit();
 	  	});
- 		 
-	  	$('#datepicker').datepicker({dateFormat : 'dd/mm/yy'}).val();
-
-	  	$("#valorInicial").maskMoney();	
+ 		$("#valorInicial").maskMoney();	
 		$("#valorInicial").focus();
 	});
 </script>

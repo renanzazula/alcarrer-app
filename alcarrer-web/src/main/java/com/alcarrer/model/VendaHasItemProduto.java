@@ -1,6 +1,11 @@
 package com.alcarrer.model;
 
 import java.io.Serializable;
+
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
+import com.alcarrer.util.Constants;
  
 public class VendaHasItemProduto implements Serializable {
 
@@ -10,7 +15,11 @@ public class VendaHasItemProduto implements Serializable {
 	private static final long serialVersionUID = -6408847193452580066L;
 	
 	private ProdutoHasItensTipoMedida produtoHasItensTipoMedida;
- 	private Double valorUnitario;
+ 	
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
+	private Double valorUnitario;
+	
+	@NumberFormat(style=Style.NUMBER)
  	private Integer quantidade;
  	
 	public ProdutoHasItensTipoMedida getProdutoHasItensTipoMedida() {

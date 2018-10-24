@@ -5,8 +5,12 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 import com.alcarrer.enums.FlagSiteEnum;
 import com.alcarrer.enums.StatusEnum;
+import com.alcarrer.util.Constants;
 
 public class Produto implements Serializable {
 
@@ -16,14 +20,26 @@ public class Produto implements Serializable {
 	private String nome;
 	private StatusEnum status;
 	private String descricao;
+	
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
 	private Double preco;
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
 	private Double precoVenda;
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
 	private Double precoCusto;
+	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
 	private Double precoOferta;
+	
 	private Double desconto;
 	private Double peso;
+	
+	@NumberFormat(style=Style.PERCENT)
 	private Integer porcentagem;
+	
+	@NumberFormat(style=Style.PERCENT)
 	private Integer porcentagemDesconto;
+	
+	// FIXME: um data e uma hora 
 	private Date dataHoraCadastro;
 
 	private Fornecedor fornecedor;

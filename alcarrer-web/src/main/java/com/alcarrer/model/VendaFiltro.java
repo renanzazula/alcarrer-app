@@ -5,6 +5,8 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.alcarrer.util.Constants;
+
 public class VendaFiltro implements Serializable {
 
 	/**
@@ -14,7 +16,7 @@ public class VendaFiltro implements Serializable {
 
 	private Integer codigo;
 	
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = Constants.PATTERN_DATE_FORMAT)
 	private Date data;
 	
 	private String status;
