@@ -51,16 +51,4 @@ public class VendaSpecification implements Specification<VendaEntity> {
 		}
 		return p;
 	}
-
-	//
-	// @Override
-	// public Predicate toPredicate(Root<VendaEntity> root, CriteriaQuery<?> query,
-	// CriteriaBuilder cb) {
-	//
-	//
-	//
-	//
-	// return null;
-	// }
-
 }
