@@ -28,14 +28,15 @@ public class MarcaServiceTest {
 
 	private MarcaEntity marca;
 	
-	Integer marcaId = 1;
+	Integer marcaId = null;
 	
 	@Before
 	public void setUp() {
 		factory = new  PodamFactoryImpl();
 		marca = factory.manufacturePojo(MarcaEntity.class);
-		marca.setCodigo(marcaId);
-		repository.save(marca);
+		MarcaEntity id = repository.save(marca);
+		marcaId = id.getCodigo();
+		
 	}
 
 	@Test
@@ -48,7 +49,7 @@ public class MarcaServiceTest {
 	public void alterar() {
 		MarcaEntity marcaReturn = repository.getOne(marcaId);
 	
-		assertEquals(marcaReturn.getCodigo(), marca.getCodigo());
+		assertEquals(marcaReturn.getCodigo(), marcaId);
 		assertEquals(marcaReturn.getNome(), marca.getNome());
 		assertEquals(marcaReturn.getDescricao(), marca.getDescricao());
 		
