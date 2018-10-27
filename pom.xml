@@ -100,6 +100,12 @@
 			<artifactId>h2</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+				 
 		<!-- https://mvnrepository.com/artifact/uk.co.jemos.podam/podam -->
 		<dependency>
 			<groupId>uk.co.jemos.podam</groupId>
@@ -107,6 +113,7 @@
 			<version>7.2.0.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
+
 
 
 	</dependencies>

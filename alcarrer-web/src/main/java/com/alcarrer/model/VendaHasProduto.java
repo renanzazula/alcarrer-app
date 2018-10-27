@@ -7,7 +7,9 @@ import org.springframework.format.annotation.NumberFormat.Style;
 
 import com.alcarrer.util.Constants;
 
-public class VendaHasProduto implements Serializable {
+import lombok.Data;
+
+public @Data class VendaHasProduto implements Serializable {
 
 	private static final long serialVersionUID = -6612762288260227887L;
 	private Integer codigo;
@@ -19,49 +21,5 @@ public class VendaHasProduto implements Serializable {
 	
 	//FIXME: validar se necessario 
 	private Integer quantidade;
-
-	public VendaHasProduto() {
-
-	}
-
-	public Venda getVenda() {
-		return venda;
-	}
-
-	public void setVenda(Venda venda) {
-		this.venda = venda;
-	}
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
-
-	public Double getValorUnitario() {
-		return valorUnitario;
-	}
-
-	public void setValorUnitario(Double valorUnitario) {
-		this.valorUnitario = valorUnitario;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
 
 }

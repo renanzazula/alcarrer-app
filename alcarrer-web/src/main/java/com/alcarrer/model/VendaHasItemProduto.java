@@ -6,8 +6,10 @@ import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
 import com.alcarrer.util.Constants;
+
+import lombok.Data;
  
-public class VendaHasItemProduto implements Serializable {
+public @Data class VendaHasItemProduto implements Serializable {
 
   	/**
 	 * 

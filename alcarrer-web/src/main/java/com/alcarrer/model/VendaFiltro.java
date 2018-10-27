@@ -7,7 +7,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.alcarrer.util.Constants;
 
-public class VendaFiltro implements Serializable {
+import lombok.Data;
+
+public @Data class VendaFiltro implements Serializable {
 
 	/**
 	 * 

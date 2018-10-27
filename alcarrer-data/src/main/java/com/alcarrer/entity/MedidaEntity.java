@@ -13,9 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
-import javax.persistence.OrderColumn;
-
-import org.springframework.core.annotation.Order;
 
 @Entity(name = "medida")
 public class MedidaEntity implements Serializable {
