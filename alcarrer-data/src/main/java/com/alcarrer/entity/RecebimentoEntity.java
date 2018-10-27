@@ -11,8 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import lombok.Data;
+
 @Entity(name = "recebimento")
-public class RecebimentoEntity implements Serializable {
+public @Data class RecebimentoEntity implements Serializable {
 
 	private static final long serialVersionUID = -6612762288260227887L;
 
@@ -41,74 +43,6 @@ public class RecebimentoEntity implements Serializable {
 	@JoinColumn(name = "cliente_codigo")
 	private ClienteEntity cliente;
 
-	public RecebimentoEntity() {
-
-	}
-
-	public RecebimentoEntity(String nome, String descricao, Date dataHora, Double valor, CaixaEntity caixa, ClienteEntity cliente) {
-		super();
-		this.nome = nome;
-		this.descricao = descricao;
-		this.dataHora = dataHora;
-		this.valor = valor;
-		this.caixa = caixa;
-		this.cliente = cliente;
-	}
-
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public Date getDataHora() {
-		return dataHora;
-	}
-
-	public void setDataHora(Date dataHora) {
-		this.dataHora = dataHora;
-	}
-
-	public Double getValor() {
-		return valor;
-	}
-
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-
-	public CaixaEntity getCaixa() {
-		return caixa;
-	}
-
-	public void setCaixa(CaixaEntity caixa) {
-		this.caixa = caixa;
-	}
-
-	public ClienteEntity getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(ClienteEntity cliente) {
-		this.cliente = cliente;
-	}
+	 
 
 }

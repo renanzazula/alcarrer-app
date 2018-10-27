@@ -17,8 +17,10 @@ import org.hibernate.annotations.ColumnDefault;
 
 import com.alcarrer.enums.StatusCaixaEnum;
 
+import lombok.Data;
+
 @Entity(name = "caixa")
-public class CaixaEntity implements Serializable {
+public @Data class CaixaEntity implements Serializable {
 
 	private static final long serialVersionUID = -6612762288260227887L;
 
@@ -67,99 +69,5 @@ public class CaixaEntity implements Serializable {
 	@Column(name = "status")
 	private StatusCaixaEnum status;
 
-	public CaixaEntity() {
-
-	}
-
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public Date getDataAbertura() {
-		return dataAbertura;
-	}
-
-	public void setDataAbertura(Date dataAbertura) {
-		this.dataAbertura = dataAbertura;
-	}
-
-	public Date getHoraAbertura() {
-		return horaAbertura;
-	}
-
-	public void setHoraAbertura(Date horaAbertura) {
-		this.horaAbertura = horaAbertura;
-	}
-
-	public Date getDataFechamento() {
-		return dataFechamento;
-	}
-
-	public void setDataFechamento(Date dataFechamento) {
-		this.dataFechamento = dataFechamento;
-	}
-
-	public Date getHoraFechamento() {
-		return horaFechamento;
-	}
-
-	public void setHoraFechamento(Date horaFechamento) {
-		this.horaFechamento = horaFechamento;
-	}
-
-	public Double getValorInicial() {
-		return valorInicial;
-	}
-
-	 
-	public void setValorInicial(Double valorInicial) {
-		this.valorInicial = valorInicial;
-	}
-
-	public Double getValorFinal() {
-		return valorFinal;
-	}
-
-	public void setValorFinal(Double valorFinal) {
-		this.valorFinal = valorFinal;
-	}
-
-	public Double getTotal() {
-		return total;
-	}
-
-	public void setTotal(Double total) {
-		this.total = total;
-	}
-
-	public Double getTotalVendas() {
-		return totalVendas;
-	}
-
-	public void setTotalVendas(Double totalVendas) {
-		this.totalVendas = totalVendas;
-	}
-
-	public Double getTotalDesconto() {
-		return totalDesconto;
-	}
-
-	public void setTotalDesconto(Double totalDesconto) {
-		this.totalDesconto = totalDesconto;
-	}
-
-	public StatusCaixaEnum getStatus() {
-		return status;
-	}
-
-	public void setStatus(StatusCaixaEnum status) {
-		this.status = status;
-	}
-	
-	
-
+ 
 }

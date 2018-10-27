@@ -13,9 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "venda_has_item_produto")
-public class VendaHasItemProdutoEntity implements Serializable {
+public @Data class VendaHasItemProdutoEntity implements Serializable {
 
 	/**
 	 * 
@@ -42,36 +44,5 @@ public class VendaHasItemProdutoEntity implements Serializable {
 	@Column(name = "quantidade")
 	private Integer quantidade;
 
-	public Double getValorUnitario() {
-		return valorUnitario;
-	}
-
-	public void setValorUnitario(Double valorUnitario) {
-		this.valorUnitario = valorUnitario;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public VendaEntity getVenda() {
-		return venda;
-	}
-
-	public void setVenda(VendaEntity venda) {
-		this.venda = venda;
-	}
-
-	public ProdutoHasItensTipoMedidaEntity getProdutoHasItensTipoMedida() {
-		return produtoHasItensTipoMedida;
-	}
-
-	public void setProdutoHasItensTipoMedida(ProdutoHasItensTipoMedidaEntity produtoHasItensTipoMedida) {
-		this.produtoHasItensTipoMedida = produtoHasItensTipoMedida;
-	}
-
+	 
 }

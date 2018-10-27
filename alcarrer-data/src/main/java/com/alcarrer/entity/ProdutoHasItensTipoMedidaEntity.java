@@ -17,8 +17,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode(exclude = {"dominios", "vendaHasItemProduto"})
 @Entity(name = "produto_has_itens_tipo_medida")
-public class ProdutoHasItensTipoMedidaEntity implements Serializable {
+public @Data class ProdutoHasItensTipoMedidaEntity implements Serializable {
 
 	private static final long serialVersionUID = -6612762288260227887L;
 
@@ -50,64 +54,6 @@ public class ProdutoHasItensTipoMedidaEntity implements Serializable {
 	@OneToMany(mappedBy = "produtoHasItensTipoMedida", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<VendaHasItemProdutoEntity> vendaHasItemProduto = new HashSet<VendaHasItemProdutoEntity>();
 
-	public ProdutoHasItensTipoMedidaEntity() {
-
-	}
-
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public ProdutoEntity getProduto() {
-		return produto;
-	}
-
-	public void setProduto(ProdutoEntity produto) {
-		this.produto = produto;
-	}
-
-	public ItensTipoMedidaEntity getItensTipoMedida() {
-		return itensTipoMedida;
-	}
-
-	public void setItensTipoMedida(ItensTipoMedidaEntity itensTipoMedida) {
-		this.itensTipoMedida = itensTipoMedida;
-	}
-
-	public Set<DominioEntity> getDominios() {
-		return dominios;
-	}
-
-	public void setDominios(Set<DominioEntity> dominios) {
-		this.dominios = dominios;
-	}
-
-	public Double getValorUnitario() {
-		return valorUnitario;
-	}
-
-	public void setValorUnitario(Double valorUnitario) {
-		this.valorUnitario = valorUnitario;
-	}
-
-	public Set<VendaHasItemProdutoEntity> getVendaHasItemProduto() {
-		return vendaHasItemProduto;
-	}
-
-	public void setVendaHasItemProduto(Set<VendaHasItemProdutoEntity> vendaHasItemProduto) {
-		this.vendaHasItemProduto = vendaHasItemProduto;
-	}
+	 
 
 }

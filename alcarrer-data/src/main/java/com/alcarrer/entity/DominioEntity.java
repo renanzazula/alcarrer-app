@@ -10,8 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import lombok.Data;
+
 @Entity(name = "dominio")
-public class DominioEntity implements Serializable {
+public @Data class DominioEntity implements Serializable {
 
 	/**
 	 * 
@@ -30,38 +32,6 @@ public class DominioEntity implements Serializable {
 	private String descricao;
 
 	@ManyToMany(mappedBy = "dominios")
-	private Set<ProdutoHasItensTipoMedidaEntity> produtoHasItensTipoMedida;
-
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public Set<ProdutoHasItensTipoMedidaEntity> getProdutoHasItensTipoMedida() {
-		return produtoHasItensTipoMedida;
-	}
-
-	public void setProdutoHasItensTipoMedida(Set<ProdutoHasItensTipoMedidaEntity> produtoHasItensTipoMedida) {
-		this.produtoHasItensTipoMedida = produtoHasItensTipoMedida;
-	}
+	private Set<ProdutoHasItensTipoMedidaEntity> produtoHasItensTipoMedida; 
 
 }

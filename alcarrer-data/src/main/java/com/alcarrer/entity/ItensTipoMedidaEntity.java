@@ -13,8 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 @Entity(name = "itens_tipo_medida")
-public class ItensTipoMedidaEntity implements Serializable {
+@EqualsAndHashCode(exclude="produtoHasItensTipoMedida")
+public @Data class ItensTipoMedidaEntity implements Serializable {
 
 	private static final long serialVersionUID = -6612762288260227887L;
 
@@ -45,66 +49,5 @@ public class ItensTipoMedidaEntity implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "itens_tipo_medida_codigo")
 	private Set<ProdutoHasItensTipoMedidaEntity> produtoHasItensTipoMedida;
-
-
-	public ItensTipoMedidaEntity() {
-
-	}
-
-	public SubCategoriaEntity getSubCategoria() {
-		return subCategoria;
-	}
-
-	public void setSubCategoria(SubCategoriaEntity subCategoria) {
-		this.subCategoria = subCategoria;
-	}
-
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getValor() {
-		return valor;
-	}
-
-	public void setValor(String valor) {
-		this.valor = valor;
-	}
-
-	public MedidaEntity getMedida() {
-		return medida;
-	}
-
-	public void setMedida(MedidaEntity medida) {
-		this.medida = medida;
-	}
-
-	public MarcaEntity getMarca() {
-		return marca;
-	}
-
-	public void setMarca(MarcaEntity marca) {
-		this.marca = marca;
-	}
-
-	public CategoriaEntity getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(CategoriaEntity categoria) {
-		this.categoria = categoria;
-	}
-	
-	public Set<ProdutoHasItensTipoMedidaEntity> getProdutoHasItensTipoMedida() {
-		return produtoHasItensTipoMedida;
-	}
-
-	public void setProdutoHasItensTipoMedida(Set<ProdutoHasItensTipoMedidaEntity> produtoHasItensTipoMedida) {
-		this.produtoHasItensTipoMedida = produtoHasItensTipoMedida;
-	}
-
+ 
 }

@@ -11,8 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode(exclude = "categoria")
 @Entity(name = "sub_categoria")
-public class SubCategoriaEntity implements Serializable {
+public @Data class SubCategoriaEntity implements Serializable {
 
 	private static final long serialVersionUID = -6612762288260227887L;
 
@@ -30,51 +34,6 @@ public class SubCategoriaEntity implements Serializable {
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "subCategoriasSet")
 	private Set<CategoriaEntity> categoria;
 
-	public SubCategoriaEntity() {
-
-	}
-
-	public SubCategoriaEntity(Integer codigo) {
-		this.codigo = codigo;
-	}
-	
-	
-	public SubCategoriaEntity(String nome, String descricao) {
-		super();
-		this.nome = nome;
-		this.descricao = descricao;
-	}
-
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public Set<CategoriaEntity> getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Set<CategoriaEntity> categoria) {
-		this.categoria = categoria;
-	}
+	 
 
 }

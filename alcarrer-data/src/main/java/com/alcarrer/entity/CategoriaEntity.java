@@ -15,8 +15,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OrderBy;
 
+import lombok.Data;
+
 @Entity(name = "categoria")
-public class CategoriaEntity implements Serializable {
+public @Data class CategoriaEntity implements Serializable {
 
 	private static final long serialVersionUID = -6612762288260227887L;
 
@@ -53,36 +55,6 @@ public class CategoriaEntity implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public Set<SubCategoriaEntity> getSubCategoriasSet() {
-		return subCategoriasSet;
-	}
-
-	public void setSubCategoriasSet(Set<SubCategoriaEntity> subCategoriasSet) {
-		this.subCategoriasSet = subCategoriasSet;
-	}
+	 
 
 }

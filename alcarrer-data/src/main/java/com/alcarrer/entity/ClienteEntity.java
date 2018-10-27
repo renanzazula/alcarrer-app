@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Data;
+
 @Entity(name = "cliente")
-public class ClienteEntity implements Serializable {
+public @Data class ClienteEntity implements Serializable {
 
 	/**
 	 * 
@@ -19,18 +21,6 @@ public class ClienteEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "codigo")
-	private Integer codigo;
-
-	public ClienteEntity() {
-	 
-	} 
-	
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
+	private Integer codigo;	 
 
 }

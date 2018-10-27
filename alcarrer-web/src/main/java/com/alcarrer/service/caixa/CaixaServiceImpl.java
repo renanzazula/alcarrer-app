@@ -85,7 +85,13 @@ public class CaixaServiceImpl implements CaixaService {
 		caixaEntity.setTotalDesconto(caixaEntity.getTotalDesconto() + venda.getDesconto() );
 		Double totalVendas = caixaEntity.getTotalVendas() + venda.getValorPago();
 		caixaEntity.setTotalVendas(totalVendas);
-		caixaEntity.setTotal(totalVendas + caixa.getValorInicial());
+		
+		// FIXME: arrumar melhor solucao 
+		if(caixa.getValorInicial() == null) {
+			caixaEntity.setTotal(totalVendas + new Double(0));	
+		}else {
+			caixaEntity.setTotal(totalVendas + caixa.getValorInicial());
+		}
 		
 		return JpaFunctions.caixaToCaixaEntity.apply(repository.saveAndFlush(caixaEntity));
 	}

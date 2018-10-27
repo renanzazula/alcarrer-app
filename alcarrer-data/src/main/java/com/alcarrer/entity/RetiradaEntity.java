@@ -11,8 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import lombok.Data;
+
 @Entity(name = "retirada")
-public class RetiradaEntity implements Serializable {
+public @Data class RetiradaEntity implements Serializable {
 
 	private static final long serialVersionUID = -6612762288260227887L;
 
