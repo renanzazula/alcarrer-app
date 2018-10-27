@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -93,7 +94,7 @@ public class ProdutoEntity implements Serializable {
 	private CategoriaEntity categoria;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "medida_codigo")
+	@JoinColumn(name = "medida_codigo")	
 	private MedidaEntity medida;
 
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -102,6 +103,7 @@ public class ProdutoEntity implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval= true)
 	@JoinColumn(name = "produto_codigo")
+	@OrderBy("itensTipoMedida")
 	private Set<ProdutoHasItensTipoMedidaEntity> produtoHasItensTipoMedida;
 	
 	public ProdutoEntity() {

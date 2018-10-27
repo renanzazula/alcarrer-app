@@ -1,5 +1,6 @@
 package com.alcarrer.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,15 +23,20 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.alcarrer.controller.validator.ProdutoValidator;
 import com.alcarrer.model.BreadCrumb;
+import com.alcarrer.model.Categoria;
 import com.alcarrer.model.Dominio;
+import com.alcarrer.model.Fornecedor;
+import com.alcarrer.model.Marca;
 import com.alcarrer.model.Medida;
 import com.alcarrer.model.Produto;
+import com.alcarrer.model.SubCategoria;
 import com.alcarrer.service.categoria.CategoriaService;
 import com.alcarrer.service.dominio.DominioService;
 import com.alcarrer.service.fornecedor.FornecedorService;
 import com.alcarrer.service.marca.MarcaService;
 import com.alcarrer.service.medida.MedidaService;
 import com.alcarrer.service.produto.ProdutoService;
+import com.alcarrer.util.ObjectConversor;
 import com.alcarrer.util.Util;
 
 @Controller
@@ -76,13 +83,13 @@ public class ProdutoController {
 //		df.setMaximumFractionDigits(32);
 //		df.setMaximumIntegerDigits(32);
 //		binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, df, true));
-//		binder.registerCustomEditor(Fornecedor.class, new ObjectConversor(Fornecedor.class));
-//		binder.registerCustomEditor(Marca.class, new ObjectConversor(Marca.class));
-//		binder.registerCustomEditor(Categoria.class, new ObjectConversor(Categoria.class));
-//		binder.registerCustomEditor(SubCategoria.class, new ObjectConversor(SubCategoria.class));
-//		binder.registerCustomEditor(Medida.class, new ObjectConversor(Medida.class));
-//		binder.registerCustomEditor(Dominio.class, new ObjectConversor(Dominio.class));
-//		binder.registerCustomEditor(ArrayList.class, new ObjectConversor(ArrayList.class));
+		binder.registerCustomEditor(Fornecedor.class, new ObjectConversor(Fornecedor.class));
+		binder.registerCustomEditor(Marca.class, new ObjectConversor(Marca.class));
+		binder.registerCustomEditor(Categoria.class, new ObjectConversor(Categoria.class));
+		binder.registerCustomEditor(SubCategoria.class, new ObjectConversor(SubCategoria.class));
+		binder.registerCustomEditor(Medida.class, new ObjectConversor(Medida.class));
+		binder.registerCustomEditor(Dominio.class, new ObjectConversor(Dominio.class));
+		binder.registerCustomEditor(ArrayList.class, new ObjectConversor(ArrayList.class));
 		binder.setValidator(produtoValidator);
 	}
 

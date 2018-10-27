@@ -231,7 +231,7 @@
 				  		var dominioStr = "";
 				  		$.each(dominios, function(keyDominio, dominioValue) {
 				  			var str_name = 'produtoHasItensTipoMedida['+ key +'].dominios['+ keyDominio +'].codigo';
-				  			dominioStr = dominioStr + "<input type='checkbox' name='" + str_name + "' value='" + dominioValue.codigo + "' class='flagCheckBox' />"+dominioValue.nome;
+				  			dominioStr = dominioStr + "<input type='checkbox' name='" + str_name + "' checked value='" + dominioValue.codigo + "' class='flagCheckBox' />"+dominioValue.nome;
 				  		});
 				  		table.row.add([value.valor, preco, input, peso, dominioStr]).draw(false);
 					});

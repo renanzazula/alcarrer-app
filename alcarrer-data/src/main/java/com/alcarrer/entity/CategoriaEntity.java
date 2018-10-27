@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 
 @Entity(name = "categoria")
 public class CategoriaEntity implements Serializable {
@@ -34,6 +35,7 @@ public class CategoriaEntity implements Serializable {
 	@JoinTable(name = "categoria_has_sub_categoria", joinColumns = {
 			@JoinColumn(name = "categoria_codigo", nullable = false, updatable = false, referencedColumnName = "codigo") }, inverseJoinColumns = {
 					@JoinColumn(name = "sub_categoria_codigo", nullable = false, updatable = false) })
+	@OrderBy("codigo")
 	private Set<SubCategoriaEntity> subCategoriasSet;
 
 	public CategoriaEntity() {

@@ -12,6 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+import javax.persistence.OrderColumn;
+
+import org.springframework.core.annotation.Order;
 
 @Entity(name = "medida")
 public class MedidaEntity implements Serializable {
@@ -31,6 +35,7 @@ public class MedidaEntity implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name = "medida_codigo")
+	@OrderBy("codigo")
 	private Set<ItensTipoMedidaEntity> itensTipoMedida;
 
 	public MedidaEntity() {

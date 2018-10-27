@@ -98,11 +98,13 @@ public class ProdutoServiceImpl implements ProdutoService {
 				produtoHasItensTipoMedida.setQuantidade(phitm.getQuantidade());
 
 				Set<DominioEntity> dominiosDB = new HashSet<>();
-				phitm.getDominios().forEach(dominio -> {
-					if(dominio.getCodigo() != null) {
-						dominiosDB.add(dominioRepository.getOne(dominio.getCodigo()));
-					}
-				});
+				if(phitm.getDominios() != null) {
+					phitm.getDominios().forEach(dominio -> {
+						if(dominio.getCodigo() != null) {
+							dominiosDB.add(dominioRepository.getOne(dominio.getCodigo()));
+						}
+					});
+				}
 				produtoHasItensTipoMedida.setDominios(dominiosDB);
 				produtoHasItensTipoMedida.setItensTipoMedida(itensTipoMedidaRepository.getOne(phitm.getItensTipoMedida().getCodigo()));
 				set.add(produtoHasItensTipoMedida);

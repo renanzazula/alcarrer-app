@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 @Entity
@@ -32,6 +33,7 @@ public class VendaHasItemProdutoEntity implements Serializable {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "produto_has_itens_tipo_medida_codigo", updatable = false)
+	@OrderBy("codigo")
 	private ProdutoHasItensTipoMedidaEntity produtoHasItensTipoMedida;
 
 	@Column(name = "valor_unitario")

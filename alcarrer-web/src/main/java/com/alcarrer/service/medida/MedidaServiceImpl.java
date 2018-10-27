@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.alcarrer.entity.CategoriaEntity;
@@ -128,5 +129,6 @@ public class MedidaServiceImpl implements MedidaService {
 				.stream().map(JpaFunctions.medidaToMedidaEntity).collect(Collectors.toList());
 
 	}
-
+	
+	 
 }
