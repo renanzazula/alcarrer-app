@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
@@ -77,6 +78,10 @@ public class ProdutoEntity implements Serializable {
 	@Column(name = "porcentagemDesconto")
 	private Integer porcentagemDesconto;
 
+	@Lob
+	@Column(name = "foto", columnDefinition = "BLOB")
+	private byte[] foto;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "dataHoraCadastro")
 	private Date dataHoraCadastro;
@@ -94,18 +99,18 @@ public class ProdutoEntity implements Serializable {
 	private CategoriaEntity categoria;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "medida_codigo")	
+	@JoinColumn(name = "medida_codigo")
 	private MedidaEntity medida;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "sub_categoria_codigo")
 	private SubCategoriaEntity subCategoria;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval= true)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "produto_codigo")
 	@OrderBy("itensTipoMedida")
 	private Set<ProdutoHasItensTipoMedidaEntity> produtoHasItensTipoMedida;
-	
+
 	public ProdutoEntity() {
 
 	}
@@ -294,6 +299,14 @@ public class ProdutoEntity implements Serializable {
 
 	public void setStatus(StatusEnum status) {
 		this.status = status;
-	}	
+	}
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
 
 }

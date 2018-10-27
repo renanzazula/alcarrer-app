@@ -16,7 +16,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 
 @Entity(name = "produto_has_itens_tipo_medida")
 public class ProdutoHasItensTipoMedidaEntity implements Serializable {

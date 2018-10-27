@@ -89,7 +89,11 @@ public class Caixa implements Serializable {
 	}
 
 	public Double getValorInicial() {
-		return valorInicial;
+		if(valorInicial == null) {
+			return new Double(0);	
+		}else {
+			return valorInicial;	
+		}		
 	}
 
 	public void setValorInicial(Double valorInicial) {

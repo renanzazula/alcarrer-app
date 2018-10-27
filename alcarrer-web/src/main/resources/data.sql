@@ -91,7 +91,7 @@ INSERT INTO `marca` (`nome`,`descricao`) VALUES ('VENTURE','VENTURE');
 INSERT INTO `marca` (`nome`,`descricao`) VALUES ('WELCOME','WELCOME');
 INSERT INTO `marca` (`nome`,`descricao`) VALUES ('WESTERN EDITION','WESTERN EDITION');
 
-INSERT INTO `dominio` (`descricao`,`nome`) VALUES ('LOJA FISICA','LOJA FISICA');
+INSERT INTO `dominio` (`descricao`,`nome`) VALUES ('LOJA FÍSICA','LOJA FÍSICA');
 
 INSERT INTO `formas_de_pagamento` (`codigo`,`descricao`,`nome`,`porcentagem_desconto`) VALUES (1,'DINHEIRO ','DINHEIRO ',0);
 INSERT INTO `formas_de_pagamento` (`codigo`,`descricao`,`nome`,`porcentagem_desconto`) VALUES (2,'CARTÃO ','CARTÃO ',0);
@@ -113,3 +113,7 @@ INSERT INTO `itens_tipo_medida` (categoria_codigo, marca_codigo, medida_codigo, 
 INSERT INTO `itens_tipo_medida` (categoria_codigo, marca_codigo, medida_codigo, sub_categoria_codigo, valor) values (3, null, 1, 16, '12');
 INSERT INTO `itens_tipo_medida` (categoria_codigo, marca_codigo, medida_codigo, sub_categoria_codigo, valor) values (3, null, 1, 16, '12.5');
 INSERT INTO `itens_tipo_medida` (categoria_codigo, marca_codigo, medida_codigo, sub_categoria_codigo, valor) values (3, null, 1, 16, '13');
+
+INSERT INTO `fornecedor` (`descricao`,`nome`) VALUES ('FORNECEDOR','FORNECEDOR');
+
+INSERT INTO `cliente` (`codigo`) VALUES (1);

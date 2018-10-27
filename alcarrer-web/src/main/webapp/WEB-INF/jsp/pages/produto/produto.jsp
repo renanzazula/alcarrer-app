@@ -33,7 +33,7 @@
 		
 		var dominios = null;
 		
-		$('#datepicker').datepicker({dateFormat : 'dd/mm/yy'}).val();
+// 		$('#datepicker').datepicker({dateFormat : 'dd/mm/yy'}).val();
 
 	  	$('#incluirProduto').on( 'click', function () {
 			$("form[name='produtoForm']").attr('action', 'incluirProduto');
@@ -157,90 +157,90 @@
   			$("#categoria")[0].selectedIndex = 0;
   			$("#subCategoria")[0].selectedIndex = 0;
   			$("#marca")[0].selectedIndex = 0;
-  			
- 			$.ajax({
-				type : "POST",                                                            
-				contentType : "application/json",
-				url : "${home}ajaxConsultarItensMedidaByMedidaCodigo",
-				data : JSON.stringify( jQuery.parseJSON($("#medida").val())),
-				dataType : 'json',
-				timeout : 100000,
-				success : function(data) {
-					
-					//display(data);
-					
-					if(data.length > 0){
-  						if(data[0].categoria != null){						
-							if(data[0].categoria.codigo != null){
-								$("#categoria option").each(function(){
-	  								if($(this).val() != "{}"){
-										var codigo = jQuery.parseJSON($(this).val()).codigo;
-		  								if(codigo == data[0].categoria.codigo){
-		  									$("#categoria")[0].selectedIndex = $(this).length;
-		  								}
-	  								}
-								});
-	  						}
-						}	
-  						
-						if(data[0].subCategoria != null){
-	  						if(data[0].subCategoria.codigo != null){
-	  							$('#subCategoria').children('option:not(:first)').remove();
-	  							var subCategorias = data[0].categoria.subCategorias;
-	  		  					$.each(subCategorias, function(key, value) {
-	  		  					     $('#subCategoria')
-	  		  					         .append($("<option></option>")
-	  		  					         .attr("value", JSON.stringify(value))
-	  		  					         .attr('selected', 'selected')
-	  		  					         .text(value.nome));
-	  		  					});
-	  							$("#subCategoria option").each(function(){
-	  								if($(this).val() != "{}"){
-		  								var codigo = jQuery.parseJSON($(this).val()).codigo;
-		  								if(codigo == data[0].subCategoria.codigo){
-		  									$(this).attr('selected', 'selected');
-		  								}
-	  								}	
-								});
-	  						}
-						}
+  			if($("#medida").val() != "{}") {
+	 			$.ajax({
+					type : "POST",                                                            
+					contentType : "application/json",
+					url : "${home}ajaxConsultarItensMedidaByMedidaCodigo",
+					data : JSON.stringify( jQuery.parseJSON($("#medida").val())),
+					dataType : 'json',
+					timeout : 100000,
+					success : function(data) {
 						
-  						if(data[0].marca != null){
-	  						if(data[0].marca.codigo != null){
-	  							$("#marca option").each(function(){
-	  								if($(this).val() != "{}"){
-		  								var codigo = jQuery.parseJSON($(this).val()).codigo;
-		  								if(codigo == data[0].marca.codigo){
-		  									$(this).attr('selected', 'selected');
+	// 					display(data);
+						
+						if(data.length > 0){
+	  						if(data[0].categoria != null){						
+								if(data[0].categoria.codigo != null){
+									$("#categoria option").each(function(){
+		  								if($(this).val() != "{}"){
+											var codigo = jQuery.parseJSON($(this).val()).codigo;
+			  								if(codigo == data[0].categoria.codigo){
+			  									$(this).attr('selected', 'selected');
+			  								}
 		  								}
-	  								}	
-								});
+									});
+		  						}
+							}	
+	  						
+							if(data[0].subCategoria != null){
+		  						if(data[0].subCategoria.codigo != null){
+		  							$('#subCategoria').children('option:not(:first)').remove();
+		  							var subCategorias = data[0].categoria.subCategorias;
+		  		  					$.each(subCategorias, function(key, value) {
+		  		  					     $('#subCategoria')
+		  		  					         .append($("<option></option>")
+		  		  					         .attr("value", JSON.stringify(value))
+		  		  					         .text(value.nome));
+		  		  					});
+		  							$("#subCategoria option").each(function(){
+		  								if($(this).val() != "{}"){
+			  								var codigo = jQuery.parseJSON($(this).val()).codigo;
+			  								if(codigo == data[0].subCategoria.codigo){
+			  									$(this).attr('selected', 'selected');
+			  								}
+		  								}	
+									});
+		  						}
+							}
+							
+	  						if(data[0].marca != null){
+		  						if(data[0].marca.codigo != null){
+		  							$("#marca option").each(function(){
+		  								if($(this).val() != "{}"){
+			  								var codigo = jQuery.parseJSON($(this).val()).codigo;
+			  								if(codigo == data[0].marca.codigo){
+			  									$(this).attr('selected', 'selected');
+			  								}
+		  								}	
+									});
+		  						}
 	  						}
-  						}
-  					}
-					
-					var preco = $("#precoVenda").val();
-					var peso = $("#peso").val();
-
-					$.each(data, function(key, value) {         
-						var inputHidden = "<input type='text' name='produtoHasItensTipoMedida["+ key +"].itensTipoMedida.codigo' value='"+value.codigo+"'/>";
-						$("#hiddensInput").append(inputHidden);
-						var input = "<input type='text' name='produtoHasItensTipoMedida["+key +"].quantidade' value='" + 1 +" '/>";
-						 
-				  		
-				  		var dominioStr = "";
-				  		$.each(dominios, function(keyDominio, dominioValue) {
-				  			var str_name = 'produtoHasItensTipoMedida['+ key +'].dominios['+ keyDominio +'].codigo';
-				  			dominioStr = dominioStr + "<input type='checkbox' name='" + str_name + "' checked value='" + dominioValue.codigo + "' class='flagCheckBox' />"+dominioValue.nome;
-				  		});
-				  		table.row.add([value.valor, preco, input, peso, dominioStr]).draw(false);
-					});
-			},
-				error : function(e) {
-					alert("Erro" + e)
-			},
-				done : function(e) {}
-			}); 
+	  					}
+						
+						var preco = $("#precoVenda").val();
+						var peso = $("#peso").val();
+	
+						$.each(data, function(key, value) {         
+							var inputHidden = "<input type='hidden' name='produtoHasItensTipoMedida["+ key +"].itensTipoMedida.codigo' value='"+value.codigo+"'/>";
+							$("#hiddensInput").append(inputHidden);
+							var input = "<input type='text' name='produtoHasItensTipoMedida["+key +"].quantidade' value='" + 1 +" '/>";
+							 
+					  		
+					  		var dominioStr = "";
+					  		$.each(dominios, function(keyDominio, dominioValue) {
+					  			var str_name = 'produtoHasItensTipoMedida['+ key +'].dominios['+ keyDominio +'].codigo';
+					  			dominioStr = dominioStr + "<input type='checkbox' name='" + str_name + "' checked value='" + dominioValue.codigo + "' class='flagCheckBox' />"+dominioValue.nome;
+					  		});
+					  		table.row.add([value.valor, preco, input, peso, dominioStr]).draw(false);
+						});
+				},
+					error : function(e) {
+						alert("Erro" + e);
+				},
+					done : function(e) {}
+				});
+  			}
   		}
 
         $("#precoCusto").maskMoney({thousands:'', decimal:'.', allowZero:true});
@@ -296,13 +296,13 @@
 									<td width="20%">
 										<form:hidden path="codigo"/>
 										 
-										<label>Bar Code:<span class="required">*</span></label>
+										<label>C&#243;digo de barras:<span class="required">*</span></label>
 										
 										<c:if test="${alterar != true}">
-											<form:input path="barCode" type="text" class="field-long" placeholder="Bar Code"/>
+											<form:input path="barCode" type="text" class="field-long" placeholder="Código de barras"/>
 										</c:if>
 										<c:if test="${alterar == true}">
-											<input type="text" class="field-long" id="barCode" placeholder="Bar Code" disabled="${alterar}" value="${produtoForm.barCode}"/>
+											<input type="text" class="field-long" id="barCode" placeholder="Código de barras" disabled="${alterar}" value="${produtoForm.barCode}"/>
 											<form:hidden path="barCode"/>	 
 										</c:if>										
 									</td>
@@ -326,7 +326,7 @@
 						 	</table>				
 						</li>
 						<li>
-							<label>Descriï¿½ï¿½o:<span class="required">*</span></label>
+							<label>Descri&#231;&#227;o:<span class="required">*</span></label>
 					 		<form:textarea path="descricao"  class="field-long field-textarea" cssStyle="height: 60px"/>
 						</li>
 						<li>
@@ -344,9 +344,9 @@
 							<table style="width:100%">
 								<tr>
 									<td >
-										<label>Preï¿½o Custo:<span class="required">*</span></label>
+										<label>Pre&#231;o Custo:<span class="required">*</span></label>
 					 					<form:input path="precoCusto" type="text" cssClass="field-long money" 
-										  id="precoCusto" placeholder="Preï¿½o Custo"/>
+										  id="precoCusto" placeholder="Preço custo"/>
 						 			</td>
 						 			<td>
 										<label>Porcentagem:<span class="required">*</span></label>
@@ -354,9 +354,9 @@
 										  id="porcentagem" placeholder="Porcentagem"/>%				 
 									</td>
 						 			<td>
-						 				<label>Preco Venda:<span class="required">*</span></label> 
+						 				<label>Pre&#231;o venda:<span class="required">*</span></label> 
 					 					<form:input path="precoVenda" type="text" cssClass="field-long money"
-										  id="precoVenda" placeholder="Preï¿½o Venda"/>
+										  id="precoVenda" placeholder="Preço venda"/>
 						 			</td>
 					 			</tr>
 								<tr>
@@ -372,19 +372,19 @@
 					 			</tr>
 					 			<tr>
 					 				<td>
-						 				<label>Porcentagem Desconto:<span class="required">*</span></label>
+						 				<label>Porcentagem desconto:<span class="required">*</span></label>
 					 					<form:input path="porcentagemDesconto" type="text" cssClass="field-long money"  cssStyle="width: 97%;"
-										  id="porcentagemDesconto" placeholder="Porcentagem Desconto"/>%
+										  id="porcentagemDesconto" placeholder="Porcentagem desconto"/>%
 					 				</td>			 				
 					 				<td>
-					 					<label>Desconto:<span class="required">*</span></label> 
+					 					<label>Valor desconto:<span class="required">*</span></label> 
 					 					<form:input path="desconto" type="text" cssClass="field-long money"
-										  id="desconto" placeholder="Desconto"/>
+										  id="desconto" placeholder="Valor desconto"/>
 					 				</td>				 				
 					 				<td>
-					 					<label>Preï¿½o Oferta:<span class="required">*</span></label> 
+					 					<label>Pre&#231;o oferta:<span class="required">*</span></label> 
 					 					<form:input path="precoOferta" type="text" cssClass="field-long money"
-										  id="precoOferta" placeholder="Preï¿½o Oferta"/>
+										  id="precoOferta" placeholder="Preço oferta"/>
 					 				</td>				 	
 					 			</tr>
 					 			<tr>
@@ -465,7 +465,7 @@
 				        	<input type="button" id="abrirCategoria" value="Nova Categoria"  style="width: 38%" />
 						</li>						
 						<li> 
-							<label>Sub Categoria<span class="required">*</span></label> 
+							<label>Subcategoria<span class="required">*</span></label> 
 					 		<form:select path="subCategoria" cssClass="field-select" cssStyle="width: 60%" multiple="false">
 						    	<form:option value="{}" label="Selecione"/>
  								<c:forEach items="${produtoForm.subCategorias}" var="item">
@@ -497,7 +497,7 @@
 						
 						<li>
 							<fieldset>
-								<legend>itensMedida
+								<legend>itens de Medida 
 									<c:if test="${fn:length(produtoForm.produtoHasItensTipoMedida) > 0 }">
 										-${produtoForm.produtoHasItensTipoMedida[0].itensTipoMedida.medida.nome}-
 									</c:if>
@@ -507,9 +507,9 @@
 											<table id="tableMedida" class="display" style="width:98%">
 												<thead>
 													<tr>
-														<th>Opï¿½ï¿½o</th>
-														<th>Preï¿½o</th>
-														<th>Inventï¿½rio</th>
+														<th>Op&#231;&#227;o</th>
+														<th>Pre&#231;o</th>
+														<th>Invent&#225;rio</th>
 														<th>Peso</th>
 														<th>Flag Site</th>							 
 													</tr>
