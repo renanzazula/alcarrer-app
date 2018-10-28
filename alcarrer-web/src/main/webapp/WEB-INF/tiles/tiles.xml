@@ -166,11 +166,9 @@
 		<put-attribute name="body"  value="/WEB-INF/jsp/pages/venda/consultarVenda.jsp" />
 	</definition>
 
-
-
 	<!-- erro -->
-	<definition name="error" extends="baseLayout">
-		<put-attribute name="title" value="Error" />
+	<definition name="erro" extends="baseLayout">
+		<put-attribute name="title" value="Erro" />
 		<put-attribute name="body" value="/WEB-INF/jsp/pages/erro/erro.jsp" />
 	</definition>
 
