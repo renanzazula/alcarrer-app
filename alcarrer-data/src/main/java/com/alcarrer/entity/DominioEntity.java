@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import lombok.Data;
 
 @Entity(name = "dominio")
@@ -25,10 +27,12 @@ public @Data class DominioEntity implements Serializable {
 	@Column(name = "codigo")
 	private Integer codigo;
 
-	@Column(name = "nome")
+	@NotBlank
+	@Column(name = "nome", length = 45)
 	private String nome;
 
-	@Column(name = "descricao")
+	@NotBlank
+	@Column(name = "descricao", length = 45)
 	private String descricao;
 
 	@ManyToMany(mappedBy = "dominios")

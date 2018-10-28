@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import lombok.Data;
 
  
@@ -21,19 +23,12 @@ public @Data class FornecedorEntity implements Serializable {
 	@Column(name = "codigo")
 	private Integer codigo;
 
-	@Column(name = "nome")
+	@NotBlank
+	@Column(name = "nome", length = 45)
 	private String nome;
 
-	@Column(name = "descricao")
-	private String descricao;
-
-	 
-//	public FornecedorEntity(String nome, String descricao) {
-//		super();
-// 		this.nome = nome;
-//		this.descricao = descricao;
-//	}
-
-	 
+	@NotBlank
+	@Column(name = "descricao", length = 45)
+	private String descricao; 
 	
 }

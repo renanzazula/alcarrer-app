@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -28,10 +30,12 @@ public @Data class MedidaEntity implements Serializable {
 	@Column(name = "codigo")
 	private Integer codigo;
 
-	@Column(name = "nome")
+	@NotBlank
+	@Column(name = "nome", length = 45)
 	private String nome;
 
-	@Column(name = "descricao")
+	@NotBlank
+	@Column(name = "descricao", length = 45)
 	private String descricao;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

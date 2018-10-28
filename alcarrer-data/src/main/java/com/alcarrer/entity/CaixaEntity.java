@@ -12,8 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.alcarrer.enums.StatusCaixaEnum;
 
@@ -29,10 +31,13 @@ public @Data class CaixaEntity implements Serializable {
 	@Column(name = "codigo")
 	private Integer codigo;
 
+	 
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dataAbertura")
 	private Date dataAbertura;
-
+	 
+	@NotNull
 	@Temporal(TemporalType.TIME)
 	@Column(name = "horaAbertura")
 	private Date horaAbertura;
@@ -45,6 +50,7 @@ public @Data class CaixaEntity implements Serializable {
 	@Column(name = "horaFechamento")
 	private Date horaFechamento;
 
+	@NotNull
 	@ColumnDefault(value = "0")
 	@Column(name = "valorInicial")
 	private Double valorInicial;

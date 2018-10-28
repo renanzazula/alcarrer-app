@@ -20,6 +20,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.alcarrer.enums.StatusEnum;
 
@@ -48,14 +53,16 @@ public @Data class ProdutoEntity implements Serializable {
 	@Column(name = "barCode")
 	private String barCode;
 
-	@Column(name = "nome")
+	@NotBlank
+	@Column(name = "nome", length = 45)
 	private String nome;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status")
 	private StatusEnum status;
 
-	@Column(name = "descricao")
+	@NotBlank
+	@Column(name = "descricao", length = 45)
 	private String descricao;
 
 	@Column(name = "preco")
@@ -76,9 +83,13 @@ public @Data class ProdutoEntity implements Serializable {
 	@Column(name = "peso")
 	private Double peso;
 
+	@NotNull
+	@Size(min=0, max=100)
 	@Column(name = "porcentagem")
 	private Integer porcentagem;
 
+	@NotNull
+	@Size(min=0, max=100)
 	@Column(name = "porcentagemDesconto")
 	private Integer porcentagemDesconto;
 
@@ -86,30 +97,38 @@ public @Data class ProdutoEntity implements Serializable {
 	@Column(name = "foto", columnDefinition = "BLOB")
 	private byte[] foto;
 
+	@NotNull
+	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "dataHoraCadastro")
 	private Date dataHoraCadastro;
-
+	
+	@NotNull
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "marca_codigo", updatable = false)
 	private MarcaEntity marca;
 
+	@NotNull
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fornecedor_codigo")
 	private FornecedorEntity fornecedor;
 
+	@NotNull
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "categoria_codigo")
 	private CategoriaEntity categoria;
 
+	@NotNull
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "medida_codigo")
 	private MedidaEntity medida;
 
+	@NotNull
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "sub_categoria_codigo")
 	private SubCategoriaEntity subCategoria;
 
+	@NotNull
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "produto_codigo")
 	@OrderBy("itensTipoMedida")

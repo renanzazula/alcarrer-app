@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import lombok.Data;
 
@@ -23,12 +27,16 @@ public @Data class FormasDePagamentoEntity implements Serializable {
 	@Column(name = "codigo")
 	private Integer codigo;
 
-	@Column(name = "nome")
+	@NotBlank
+	@Column(name = "nome", length = 45)
 	private String nome;
 
-	@Column(name = "descricao")
+	@NotBlank
+	@Column(name = "descricao", length = 45)
 	private String descricao;
 
+	@NotNull
+	@Size(min =0, max = 100)
 	@Column(name = "porcentagemDesconto")
 	private int porcentagemDesconto;
 

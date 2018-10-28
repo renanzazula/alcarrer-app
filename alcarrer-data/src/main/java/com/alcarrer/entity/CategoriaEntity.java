@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OrderBy;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import lombok.Data;
 
@@ -27,10 +30,12 @@ public @Data class CategoriaEntity implements Serializable {
 	@Column(name = "codigo")
 	private Integer codigo;
 
-	@Column(name = "nome")
+	@NotBlank
+	@Size
+	@Column(name = "nome", length = 45)
 	private String nome;
 
-	@Column(name = "descricao")
+	@Column(name = "descricao", length = 45)
 	private String descricao;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
