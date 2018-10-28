@@ -68,7 +68,7 @@ public class FormasDePagamentoController {
 		model.addAttribute("mensagem", message.getMessage("global.alteracao", null, Locale.US));
 		model.addAttribute("list", formasDePagamentoService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 	
 	@RequestMapping(value = "/incluirFormasDePagamento", method = { RequestMethod.GET, RequestMethod.POST })
@@ -78,7 +78,7 @@ public class FormasDePagamentoController {
 		model.addAttribute("mensagem", message.getMessage("global.inclusao", null, Locale.US));
 		model.addAttribute("list", formasDePagamentoService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 	
 	@RequestMapping(value = "/consultarFormasDePagamento", method = { RequestMethod.GET, RequestMethod.POST })
@@ -96,7 +96,7 @@ public class FormasDePagamentoController {
 		model.addAttribute("mensagem", message.getMessage("global.exclusao", null, Locale.US));
 		model.addAttribute("list", formasDePagamentoService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 	
 	public List<BreadCrumb> breadCrumbList() {

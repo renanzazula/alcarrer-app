@@ -122,7 +122,7 @@ public class ProdutoController {
 		model.addAttribute("mensagem", message.getMessage("global.inclusao", null, Locale.US));
 		model.addAttribute("list", produtoService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/alterarProduto", method = { RequestMethod.GET, RequestMethod.POST })
@@ -140,7 +140,7 @@ public class ProdutoController {
 		model.addAttribute("mensagem", message.getMessage("global.alteracao", null, Locale.US));
 		model.addAttribute("list", produtoService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/excluirProduto", method = { RequestMethod.GET, RequestMethod.POST })
@@ -151,7 +151,7 @@ public class ProdutoController {
 		model.addAttribute("mensagem", message.getMessage("global.exclusao", null, Locale.US));
 		model.addAttribute("list", produtoService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/abrirAlterarProduto", method = { RequestMethod.GET, RequestMethod.POST })

@@ -61,7 +61,7 @@ public class FornecedorController {
 		model.addAttribute("list", fornecedorService.consultar());
 		model.addAttribute("fornecedorForm", new Fornecedor());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/abrirAlterarFornecedor", method = { RequestMethod.GET, RequestMethod.POST })
@@ -88,7 +88,7 @@ public class FornecedorController {
 		model.addAttribute("mensagem", message.getMessage("global.alteracao", null, Locale.US));
 		model.addAttribute("list", fornecedorService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/excluirFornecedor", method = { RequestMethod.GET, RequestMethod.POST })
@@ -98,7 +98,7 @@ public class FornecedorController {
 		model.addAttribute("mensagem", message.getMessage("global.exclusao", null, Locale.US));
 		model.addAttribute("list", fornecedorService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	public List<BreadCrumb> breadCrumbList() {

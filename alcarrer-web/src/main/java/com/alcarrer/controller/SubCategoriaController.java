@@ -60,7 +60,7 @@ public class SubCategoriaController {
 		model.addAttribute("list", subCategoriaService.consultar());
 		model.addAttribute("mensagem", message.getMessage("global.inclusao", null, Locale.US));
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/alterarSubCategoria", method = { RequestMethod.GET, RequestMethod.POST })
@@ -70,7 +70,7 @@ public class SubCategoriaController {
 		model.addAttribute("mensagem", message.getMessage("global.alteracao", null, Locale.US));
 		model.addAttribute("list", subCategoriaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/consultarSubCategoria", method = { RequestMethod.GET, RequestMethod.POST })
@@ -97,7 +97,7 @@ public class SubCategoriaController {
 		model.addAttribute("mensagem", message.getMessage("global.exclusao", null, Locale.US));
 		model.addAttribute("list", subCategoriaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	public List<BreadCrumb> breadCrumbList() {

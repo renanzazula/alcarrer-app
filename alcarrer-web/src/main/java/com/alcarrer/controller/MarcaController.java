@@ -67,7 +67,7 @@ public class MarcaController {
 		model.addAttribute("mensagem", message.getMessage("global.alteracao", null, Locale.US));
 		model.addAttribute("list", marcaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/incluirMarca", method = { RequestMethod.GET, RequestMethod.POST })
@@ -77,7 +77,7 @@ public class MarcaController {
 		model.addAttribute("mensagem", message.getMessage("global.inclusao", null, Locale.US));
 		model.addAttribute("list", marcaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/consultarMarca", method = { RequestMethod.GET, RequestMethod.POST })
@@ -95,7 +95,7 @@ public class MarcaController {
 		model.addAttribute("mensagem", message.getMessage("global.exclusao", null, Locale.US));
 		model.addAttribute("list", marcaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	public List<BreadCrumb> breadCrumbList() {

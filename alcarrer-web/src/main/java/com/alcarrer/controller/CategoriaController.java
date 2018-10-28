@@ -68,7 +68,7 @@ public class CategoriaController {
 		model.addAttribute("mensagem", message.getMessage("global.alteracao", null, Locale.US));
 		model.addAttribute("categoriaList", categoriaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/excluirCategoria", method = { RequestMethod.GET, RequestMethod.POST })
@@ -79,7 +79,7 @@ public class CategoriaController {
 		model.addAttribute("mensagem", message.getMessage("global.exclusao", null, Locale.US));
 		model.addAttribute("categoriaList", categoriaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/incluirCategoria", method = { RequestMethod.GET, RequestMethod.POST })
@@ -89,7 +89,7 @@ public class CategoriaController {
 		categoriaService.incluir(categoria);
 		model.addAttribute("categoriaList", categoriaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/abrirAlterarCategoria", method = { RequestMethod.GET, RequestMethod.POST })

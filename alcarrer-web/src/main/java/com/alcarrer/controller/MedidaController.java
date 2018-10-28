@@ -83,7 +83,7 @@ public class MedidaController {
 		model.addAttribute("mensagem", message.getMessage("global.alteracao", null, Locale.US));
 		model.addAttribute("medidaList", medidaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/incluirMedida", method = { RequestMethod.GET, RequestMethod.POST })
@@ -104,7 +104,7 @@ public class MedidaController {
 		
 		model.addAttribute("medidaList", m);
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/excluirMedida", method = { RequestMethod.GET, RequestMethod.POST })
@@ -114,7 +114,7 @@ public class MedidaController {
 		model.addAttribute("mensagem", message.getMessage("global.exclusao", null, Locale.US));
 		model.addAttribute("medidaList", medidaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	public List<BreadCrumb> breadCrumbList() {

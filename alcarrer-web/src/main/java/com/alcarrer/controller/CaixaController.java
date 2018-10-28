@@ -25,7 +25,7 @@ public class CaixaController {
 
 	 
 	private static final String VIEW = "caixa";
-	private static final String ERROR = "error";
+	private static final String ERROR = "erro";
 	private static final String ABRIR_CAIXA_VIEW = "abrirCaixa";
 	private static final String FECHAR_CAIXA_VIEW = "fecharCaixa";
 

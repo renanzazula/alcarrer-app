@@ -104,7 +104,7 @@ public class VendaController extends BaseVendaController {
 		model.addAttribute("vendafiltro", new VendaFiltro());
 		model.addAttribute("list", vendaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList(VIEW_COLSULTA));
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class VendaController extends BaseVendaController {
 		model.addAttribute("listStatusVenda", carregarStatusVenda());
 		model.addAttribute("list", vendaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList(VIEW_COLSULTA));		
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/alterarVenda", method = { RequestMethod.GET, RequestMethod.POST })
@@ -132,6 +132,6 @@ public class VendaController extends BaseVendaController {
 		model.addAttribute("vendaForm", new Venda());
 		model.addAttribute("list", vendaService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList(FINALIZAR_VENDA_VIEW));
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 }

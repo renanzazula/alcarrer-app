@@ -68,7 +68,7 @@ public class DominioController {
 		model.addAttribute("mensagem", message.getMessage("global.alteracao", null, Locale.US));
 		model.addAttribute("list", dominioService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/incluirDominio", method = { RequestMethod.GET, RequestMethod.POST })
@@ -78,7 +78,7 @@ public class DominioController {
 		model.addAttribute("mensagem", message.getMessage("global.inclusao", null, Locale.US));
 		model.addAttribute("list", dominioService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	@RequestMapping(value = "/consultarDominio", method = { RequestMethod.GET, RequestMethod.POST })
@@ -96,7 +96,7 @@ public class DominioController {
 		model.addAttribute("mensagem", message.getMessage("global.exclusao", null, Locale.US));
 		model.addAttribute("list", dominioService.consultar());
 		model.addAttribute("breadCrumbItens", breadCrumbList());
-		return VIEW_COLSULTA;
+		return "redirect:"+VIEW_COLSULTA;
 	}
 
 	public List<BreadCrumb> breadCrumbList() {
