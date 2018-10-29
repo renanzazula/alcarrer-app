@@ -28,7 +28,7 @@ public @Data class Venda implements Serializable {
 	private Double valorTotal;
 	
 	@NumberFormat(style=Style.NUMBER)
-	private long quantidade;
+	private Integer quantidade;
 	
 	@NumberFormat(style=Style.CURRENCY, pattern=Constants.PATTERN_NUMBER_FORMAT)
 	private Double subTotal;

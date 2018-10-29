@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -70,21 +71,26 @@ public @Data class VendaEntity implements Serializable {
 	@Column(name = "pagamento")
 	private Double pagamento;
 
+	@NotNull
 	@Column(name = "quantidade")
-	private long quantidade;
+	private Integer quantidade;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "caixa_codigo")
 	private CaixaEntity caixa;
-
+	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "cliente_codigo")
 	private ClienteEntity cliente;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "formasDePagamento_codigo")
 	private FormasDePagamentoEntity formaDePagamento;
 
+	@NotNull
 	@OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
 	private Set<VendaHasItemProdutoEntity> vendaHasItemProduto = new HashSet<VendaHasItemProdutoEntity>();
 
