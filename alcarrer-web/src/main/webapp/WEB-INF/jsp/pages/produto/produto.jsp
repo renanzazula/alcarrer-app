@@ -243,10 +243,10 @@
   			}
   		}
 
-        $("#precoCusto").maskMoney({thousands:'', decimal:'.', allowZero:true});
-        $("#precoVenda").maskMoney({thousands:'', decimal:'.', allowZero:true});
-        $("#desconto").maskMoney({thousands:'', decimal:'.', allowZero:true});
-        $("#precoOferta").maskMoney({thousands:'', decimal:'.', allowZero:true});
+//         $("#precoCusto").maskMoney({thousands:'', decimal:'.', allowZero:true});
+//         $("#precoVenda").maskMoney({thousands:'', decimal:'.', allowZero:true});
+//         $("#desconto").maskMoney({thousands:'', decimal:'.', allowZero:true});
+//         $("#precoOferta").maskMoney({thousands:'', decimal:'.', allowZero:true});
          
         function calculaPrecoVenda(data) {
         	var VTOTALPRODUTO = (100 - parseFloat( $("#porcentagem").val() ) );
