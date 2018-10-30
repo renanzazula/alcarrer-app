@@ -4,12 +4,14 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<spring:url value="/resources/jquery-3.3.1.js" var="jquery331Js" />
-<script type="text/javascript" src="${jquery331Js}"></script>
+<%-- <spring:url value="/resources/jquery-3.3.1.js" var="jquery331Js" /> --%>
+<%-- <script type="text/javascript" src="${jquery331Js}"></script> --%>
 	  
-<spring:url value="/resources/jquery.dataTables.min.js" var="jqueryDataTablesMinJs" />
-<script type="text/javascript" src="${jqueryDataTablesMinJs}"></script>
+<%-- <spring:url value="/resources/jquery.dataTables.min.js" var="jqueryDataTablesMinJs" /> --%>
+<%-- <script type="text/javascript" src="${jqueryDataTablesMinJs}"></script> --%>
+
 <c:url var="home" value="/" scope="request" />
+
 <style>
 	td.details-control {
 	    background: url('resources/images/details_open.png') no-repeat center center;

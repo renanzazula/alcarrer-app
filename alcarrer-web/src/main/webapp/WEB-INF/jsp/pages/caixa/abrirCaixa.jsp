@@ -7,20 +7,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 
-<spring:url value="/resources/external/jquery/jquery.js" var="jqueryJs" />
-<script type="text/javascript" src="${jqueryJs}"></script>
+<%-- <spring:url value="/resources/external/jquery/jquery.js" var="jqueryJs" /> --%>
+<%-- <script type="text/javascript" src="${jqueryJs}"></script> --%>
 
-<spring:url value="/resources/jquery-ui.js" var="jqueryUiJs" />
-<script type="text/javascript" src="${jqueryUiJs}"></script>
+<%-- <spring:url value="/resources/jquery-ui.js" var="jqueryUiJs" /> --%>
+<%-- <script type="text/javascript" src="${jqueryUiJs}"></script> --%>
 
-<spring:url value="/resources/jquery.mask.js" var="jqueryMaskJs" />
-<script type="text/javascript" src="${jqueryMaskJs}"></script>
+<%-- <spring:url value="/resources/jquery.mask.js" var="jqueryMaskJs" /> --%>
+<%-- <script type="text/javascript" src="${jqueryMaskJs}"></script> --%>
 
-<spring:url value="/resources/jquery.mask.min.js" var="jqueryMaskMinJs" />
-<script type="text/javascript" src="${jqueryMaskMinJs}"></script>
+<%-- <spring:url value="/resources/jquery.mask.min.js" var="jqueryMaskMinJs" /> --%>
+<%-- <script type="text/javascript" src="${jqueryMaskMinJs}"></script> --%>
 
-<spring:url value="/resources/jquery.maskMoney.js" var="jqueryMaskMoneyJs" />
-<script type="text/javascript" src="${jqueryMaskMoneyJs}"></script>
+<%-- <spring:url value="/resources/jquery.maskMoney.js" var="jqueryMaskMoneyJs" /> --%>
+<%-- <script type="text/javascript" src="${jqueryMaskMoneyJs}"></script> --%>
 
 
 <spring:url value="/abrirCaixa" var="abrirCaixaActionUrl" />

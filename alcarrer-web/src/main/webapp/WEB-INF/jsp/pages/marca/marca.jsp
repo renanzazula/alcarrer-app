@@ -5,12 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-<spring:url value="/resources/external/jquery/jquery.js" var="jqueryJs" />
-<script type="text/javascript" src="${jqueryJs}"></script>
-
-<spring:url value="/resources/jquery-ui.js" var="jqueryUiJs" />
-<script type="text/javascript" src="${jqueryUiJs}"></script>
-
 <script type="text/javascript">
 	$(document).ready(function(){
 		
@@ -38,7 +32,7 @@
 </script>
  
 <form:form method="post" modelAttribute="marcaForm" action="abrirMarca" name="marcaForm">
-	</br>
+	<br>
 	<fieldset>
 		<legend>Gerenciar Marca</legend>
 		<ul class="form-style-1">
@@ -77,5 +71,5 @@
 			
 		</ul>
 	</fieldset>	
-	</br>
+	<br>
 </form:form >

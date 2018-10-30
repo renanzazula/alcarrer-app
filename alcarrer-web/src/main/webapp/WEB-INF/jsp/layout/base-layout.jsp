@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,27 +11,44 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>
 		<tiles:insertAttribute name="titleApp" ignore="true" /> - <tiles:insertAttribute name="title" ignore="true" />
-	</title>
-	
-	<spring:url value="/resources/jquery-ui.css" var="mainCss" />
-	<link rel="stylesheet" href="${mainCss}"/>
-	
-	<spring:url value="/resources/formTemplate.css" var="formTemplate" />
-	<link rel="stylesheet" href="${formTemplate}"/>
-	
-	<spring:url value="/resources/jquery.dataTables.min.css" var="jqueryDataTablesMinCss" />
-	<link rel="stylesheet" href="${jqueryDataTablesMinCss}">
-	
-	<spring:url value="/resources/breadcrumb.css" var="breadcrumbCss" />
-	<link rel="stylesheet" href="${breadcrumbCss}">
+	</title>	 
+  	
+  	<!-- Jquery -->
+  	<spring:url value="/webjars/jquery/3.3.1/dist/jquery.js" var="jqueryjs" />
+	<script type="text/javascript" src="${jqueryjs}"></script>
 
-	<spring:url value="/resources/images/favicon.ico" var="favicon" />
-	<link rel="shortcut icon" type="image/png" href="${favicon}"/>
+  	<spring:url value="/webjars/jquery-ui/1.12.1/jquery-ui.css" var="jquery_ui_css" />
+    <link rel='stylesheet' href='${jquery_ui_css}'>
 
-	<spring:url value="/resources/jquery.min.js_311.js" var="jquery_min_js_311_js" />
-	<script type="text/javascript" src="${jquery_min_js_311_js}"></script>
 
-	<script type="text/javascript">
+	<!-- Latest compiled and minified CSS -->
+<%--   	<spring:url value="/webjars/bootstrap/4.1.3/css/bootstrap.min.css" var="bootstrapmincss" /> --%>
+<%--     <link rel='stylesheet' href='${bootstrapmincss}'> --%>
+	
+	<!-- Latest compiled and minified JavaScript -->
+<%-- 	<spring:url value="/webjars/bootstrap/4.1.3/js/bootstrap.min.js" var="bootstrapminjs" /> --%>
+<%-- 	<script type="text/javascript" src="${bootstrapminjs}"></script> --%>
+
+
+
+	<!-- 	Data Table Import  -->
+	<spring:url value="/webjars/datatables/1.10.19/media/js/jquery.dataTables.js" var="jquerydataTablesjs" />
+	<script type="text/javascript" src="${jquerydataTablesjs}"></script>
+
+	<spring:url value="/webjars/datatables/1.10.19/media/js/jquery.dataTables.min.js" var="jquerydataTablesminjs" />
+	<script type="text/javascript" src="${jquerydataTablesminjs}"></script>
+	
+	<!-- jquery.dataTables.min.css -->
+	<spring:url value="/webjars/datatables/1.10.19/media/css/jquery.dataTables.min.css" var="jquerydataTablesmincss" />
+	<link rel="stylesheet" href="${jquerydataTablesmincss}">
+
+	<spring:url value="resources/css/formTemplate.css" var="formTemplate_Css" /> 
+    <link rel="stylesheet" href="${formTemplate_Css}">
+
+	<spring:url value="resources/css/breadcrumb.css" var="breadcrumb_css" /> 
+    <link rel="stylesheet" href="${breadcrumb_css}">    
+ 
+<script type="text/javascript">
 // 		$(document).ready(function() {
 // 		    $("#locales").change(function () {
 // 		        var selectedOption = $('#locales').val();

@@ -39,8 +39,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/theme1/").setCachePeriod(31556926)
-				.resourceChain(true).addResolver(new PathResourceResolver());
+	    registry.addResourceHandler("/webjars/**")
+	    		.addResourceLocations("classpath:/META-INF/resources/webjars/");
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 
 	@Bean

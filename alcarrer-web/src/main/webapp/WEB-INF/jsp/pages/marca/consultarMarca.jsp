@@ -4,12 +4,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<spring:url value="/resources/jquery-1.12.4.js" var="jquery124Js" />
-<script type="text/javascript" src="${jquery124Js}"></script>
-
-<spring:url value="/resources/jquery.dataTables.min.js" var="jqueryDataTablesMinJs" />
-<script type="text/javascript" src="${jqueryDataTablesMinJs}"></script>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#tableConsulta').DataTable();
@@ -24,8 +18,7 @@
 </script>
  
 <form:form method="post" modelAttribute="marcaForm" action="abrirAlterarMarca" name="marcaForm">
-	</br>
-		
+	<br>
 		<form:hidden path="codigo" id="codigo"/>
 		<fieldset>
 			<legend>Gerenciar Marca</legend>
@@ -41,7 +34,7 @@
 						</div>
 					</div>
 				</c:if>
-				</br>
+				<br>
 				<table id="tableConsulta" class="display" cellspacing="0" width="98%">
 					<thead>
 						<tr>
@@ -63,5 +56,5 @@
 			</li>
 		</ul>
 		</fieldset>	
-	</br>
+	<br>
 </form:form>

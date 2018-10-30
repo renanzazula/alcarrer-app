@@ -4,11 +4,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<spring:url value="/resources/external/jquery/jquery.js" var="jqueryJs" />
-<script type="text/javascript" src="${jqueryJs}"></script>
+<%-- <spring:url value="/resources/external/jquery/jquery.js" var="jqueryJs" /> --%>
+<%-- <script type="text/javascript" src="${jqueryJs}"></script> --%>
 
-<spring:url value="/resources/jquery-ui.js" var="jqueryUiJs" />
-<script type="text/javascript" src="${jqueryUiJs}"></script>
+<%-- <spring:url value="/resources/jquery-ui.js" var="jqueryUiJs" /> --%>
+<%-- <script type="text/javascript" src="${jqueryUiJs}"></script> --%>
 
 <script type="text/javascript">
 	$(document).ready(function(){

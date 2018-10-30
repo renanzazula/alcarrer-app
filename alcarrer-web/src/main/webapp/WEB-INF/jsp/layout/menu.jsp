@@ -1,8 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<spring:url value="/resources/jquery.min.js_311.js" var="jquery_min_js_311_js" />
-<script type="text/javascript" src="${jquery_min_js_311_js}"></script>
- 
 <style>
 .navigation {
 	background-color:  red;
