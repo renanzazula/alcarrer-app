@@ -20,6 +20,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -84,12 +86,14 @@ public @Data class ProdutoEntity implements Serializable {
 	private Double peso;
 
 	@NotNull
-	@Size(min=0, max=100)
+	@Min(0)
+	@Max(100)
 	@Column(name = "porcentagem")
 	private Integer porcentagem;
 
 	@NotNull
-	@Size(min=0, max=100)
+	@Min(0)
+	@Max(100)
 	@Column(name = "porcentagemDesconto")
 	private Integer porcentagemDesconto;
 
