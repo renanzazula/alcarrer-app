@@ -1,1 +1,20 @@
-FROM maven:3.5-jdk-8
+# Start with a base image containing Java runtime
+FROM openjdk:8-jdk-alpine
+
+# Add Maintainer Info
+LABEL maintainer="renanzazula@gmail.com"
+
+# Add a volume pointing to /tmp
+VOLUME /tmp
+
+# Make port 8080 available to the world outside this container
+EXPOSE 8080:8080
+
+# The application's jar file
+ADD /alcarrer-web/target/alcarrer-web-*.war /app.war
+
+
+# Run the jar file 
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.war"]
+CMD ["-Dspring.profiles.active=local", "-jar"]
+

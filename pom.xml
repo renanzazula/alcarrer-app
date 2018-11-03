@@ -15,7 +15,7 @@
 	</modules>
 
 	<properties>
-		<apachetiles.version>3.0.5</apachetiles.version>
+		<apachetiles.version>3.0.8</apachetiles.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 	</properties>

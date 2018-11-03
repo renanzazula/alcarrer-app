@@ -16,7 +16,10 @@
   	<!-- Jquery -->
   	<spring:url value="/webjars/jquery/3.3.1/dist/jquery.js" var="jqueryjs" />
 	<script type="text/javascript" src="${jqueryjs}"></script>
-
+	
+  	<spring:url value="/webjars/jquery-ui/1.12.1/jquery-ui.js" var="jqueryUijs" />
+	<script type="text/javascript" src="${jqueryUijs}"></script>
+  	
   	<spring:url value="/webjars/jquery-ui/1.12.1/jquery-ui.css" var="jquery_ui_css" />
     <link rel='stylesheet' href='${jquery_ui_css}'>
 
@@ -25,14 +28,6 @@
 
   	<spring:url value="/webjars/jquery-maskmoney/3.0.2/dist/jquery.maskMoney.min.js" var="jquery_maskMoney_min_js" />
 	<script type="text/javascript" src="${jquery_maskMoney_min_js}"></script>
-
-	<!-- Latest compiled and minified CSS -->
-<%--   	<spring:url value="/webjars/bootstrap/4.1.3/css/bootstrap.min.css" var="bootstrapmincss" /> --%>
-<%--     <link rel='stylesheet' href='${bootstrapmincss}'> --%>
-	
-	<!-- Latest compiled and minified JavaScript -->
-<%-- 	<spring:url value="/webjars/bootstrap/4.1.3/js/bootstrap.min.js" var="bootstrapminjs" /> --%>
-<%-- 	<script type="text/javascript" src="${bootstrapminjs}"></script> --%>
 
 	<!-- 	Data Table Import  -->
 	<spring:url value="/webjars/datatables/1.10.19/media/js/jquery.dataTables.js" var="jquerydataTablesjs" />
